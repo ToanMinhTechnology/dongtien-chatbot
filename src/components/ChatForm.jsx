@@ -9,10 +9,13 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
     if (!userMessage) return;
     inputRef.current.value = ""; 
 
-    setChatHistory((history) => [...history, { role:"user", text: userMessage }]);
-    setTimeout (() => setChatHistory((history) => [...history, { role: "model", text: "Thinking..." }]), 600);
+    // Add user message and "Thinking..." together so generateBotResponse always
+    // sees a "Thinking..." to replace — avoids the race where an instant FAQ match
+    // fires updateHistory() before the old 600ms setTimeout could add it.
+    const newHistory = [...chatHistory, { role: "user", text: userMessage }];
+    setChatHistory([...newHistory, { role: "model", text: "Thinking..." }]);
 
-    generateBotResponse([...chatHistory, { role: "user", text: userMessage }]);
+    generateBotResponse(newHistory);
   };
 
   return (
