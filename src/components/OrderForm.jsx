@@ -255,7 +255,7 @@ const OrderForm = ({ onSubmit, onCancel, onChatZalo }) => {
         opacity: 0.7,
         textAlign: 'center'
       }}>
-        Đồng Tiền sẽ gọi xác nhận trong 30 phút
+        Vani sẽ liên hệ xác nhận trong 30 phút
       </div>
     </div>
   );

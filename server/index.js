@@ -3,27 +3,52 @@
 
 import express from 'express';
 import cors from 'cors';
+import { rateLimit } from 'express-rate-limit';
 import { orderRouter } from './routes/order.js';
+import { chatRouter } from './routes/chat.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// Restrict CORS to the known frontend origin
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:5173';
+app.use(cors({ origin: ALLOWED_ORIGIN }));
+
+app.use(express.json({ limit: '10kb' }));
+
+// Rate limit order + chat endpoints — 20 requests per minute per IP
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, error: 'Quá nhiều yêu cầu. Vui lòng thử lại sau 1 phút.' }
+});
+app.use('/api/order', limiter);
+app.use('/api/chat', limiter);
 
 // Routes
 app.use('/api', orderRouter);
+app.use('/api', chatRouter);
 
 // Health check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`🚀 Đồng Tiền API Server running on port ${PORT}`);
   console.log(`📍 http://localhost:${PORT}/health`);
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} is already in use. Set PORT env var to use a different port.`);
+  } else {
+    console.error('❌ Server error:', err);
+  }
+  process.exit(1);
 });
 
 export default app;
