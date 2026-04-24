@@ -10,9 +10,15 @@ import { chatRouter } from './routes/chat.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Restrict CORS to the known frontend origin
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN || 'http://localhost:5173';
-app.use(cors({ origin: ALLOWED_ORIGIN }));
+// Allow any localhost port in dev; lock to ALLOWED_ORIGIN env var in production
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
+const corsOrigin = ALLOWED_ORIGIN
+  ? ALLOWED_ORIGIN
+  : (origin, cb) => {
+      if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) cb(null, true);
+      else cb(new Error('Not allowed by CORS'));
+    };
+app.use(cors({ origin: corsOrigin }));
 
 app.use(express.json({ limit: '10kb' }));
 
