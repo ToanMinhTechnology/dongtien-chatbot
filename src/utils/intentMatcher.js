@@ -1,63 +1,38 @@
-// Intent Matcher - Keyword-based intent classification
-// Không dùng RAG/AI - pure keyword matching
+// Intent Matcher — keyword-based FAQ lookup for Tiệm Bánh Vani
+// Uses knowledgeBase.faqs: [{question, answer, keywords}]
 
-import { knowledgeBase, intentGroups } from '../data/knowledgeBase.js';
+import { knowledgeBase } from '../data/knowledgeBase.js';
 
-/**
- * Normalize Vietnamese text for matching
- * @param {string} text
- * @returns {string}
- */
-const normalizeText = (text) => {
-  return text
+const faqs = knowledgeBase.faqs ?? [];
+
+const normalizeText = (text) =>
+  text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '') // Remove diacritics
-    .replace(/[^\w\s]/g, ' ') // Replace punctuation with space
-    .replace(/\s+/g, ' ') // Collapse multiple spaces
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^\w\s]/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
-};
 
-/**
- * Calculate match score between query and keywords
- * @param {string} query - normalized user query
- * @param {string[]} keywords - keywords to match against
- * @returns {number} - score 0-1
- */
+// Best-match base (0.6) + density bonus (0.4) — avoids penalising FAQs with many keywords
 const calculateMatchScore = (query, keywords) => {
-  if (!keywords || keywords.length === 0) return 0;
-
-  let score = 0;
-  let matchedKeywords = 0;
-
-  for (const keyword of keywords) {
-    const normalizedKeyword = normalizeText(keyword);
-
-    // Exact match
-    if (query.includes(normalizedKeyword)) {
-      score += 1;
-      matchedKeywords++;
-      continue;
-    }
-
-    // Partial match (keyword inside query or query inside keyword)
-    if (normalizedKeyword.length >= 3) {
-      if (query.includes(normalizedKeyword.substring(0, normalizedKeyword.length - 1))) {
-        score += 0.8;
-        matchedKeywords++;
-        continue;
-      }
-    }
+  if (!keywords?.length) return 0;
+  let maxScore = 0;
+  let totalScore = 0;
+  let matched = 0;
+  for (const kw of keywords) {
+    const nkw = normalizeText(kw);
+    let s = 0;
+    if (query.includes(nkw)) { s = 1; }
+    else if (nkw.length >= 3 && query.includes(nkw.slice(0, -1))) { s = 0.8; }
+    if (s > 0) { totalScore += s; matched++; maxScore = Math.max(maxScore, s); }
   }
-
-  // Return weighted score
-  if (keywords.length === 0) return 0;
-  return matchedKeywords > 0 ? (score / keywords.length) * Math.min(matchedKeywords / 2, 1) : 0;
+  if (matched === 0) return 0;
+  return maxScore * 0.6 + (totalScore / keywords.length) * 0.4;
 };
 
 /**
- * Match user query against knowledge base
- * @param {string} userQuery - raw user input
+ * Match user query against FAQ knowledge base.
  * @returns {{ match: boolean, intent: string|null, answer: string|null, confidence: number }}
  */
 export const matchIntent = (userQuery) => {
@@ -65,78 +40,42 @@ export const matchIntent = (userQuery) => {
     return { match: false, intent: null, answer: null, confidence: 0 };
   }
 
-  const normalizedQuery = normalizeText(userQuery);
-  let bestMatch = null;
+  const q = normalizeText(userQuery);
+  let best = null;
   let bestScore = 0;
 
-  // Match against each FAQ entry
-  for (const faq of knowledgeBase) {
-    const score = calculateMatchScore(normalizedQuery, faq.keywords);
-
-    if (score > bestScore) {
-      bestScore = score;
-      bestMatch = faq;
-    }
+  for (const faq of faqs) {
+    const score = calculateMatchScore(q, faq.keywords);
+    if (score > bestScore) { bestScore = score; best = faq; }
   }
 
-  // Confidence threshold: 0.3 for now (lowered since keywords are specific)
-  const CONFIDENCE_THRESHOLD = 0.3;
-
-  if (bestScore >= CONFIDENCE_THRESHOLD && bestMatch) {
+  const THRESHOLD = 0.3;
+  if (bestScore >= THRESHOLD && best) {
     return {
       match: true,
-      intent: bestMatch.intent,
-      answer: bestMatch.answer,
+      intent: normalizeText(best.question),
+      answer: best.answer,
       confidence: bestScore,
-      question: bestMatch.question
+      question: best.question,
     };
   }
-
   return { match: false, intent: null, answer: null, confidence: 0 };
 };
 
-/**
- * Check if query is an order intent
- * @param {string} userQuery
- * @returns {boolean}
- */
+const ORDER_KEYWORDS = [
+  'dat ngay', 'dat banh ngay', 'mua ngay', 'order ngay',
+  'muon dat', 'can dat', 'order', 'dat hang',
+];
+
 export const isOrderIntent = (userQuery) => {
-  const orderKeywords = [
-    'đặt ngay', 'đặt bánh ngay', 'mua ngay', 'order ngay',
-    'muốn đặt', 'cần đặt', 'order', 'đặt hàng'
-  ];
-
-  const normalized = normalizeText(userQuery);
-  return orderKeywords.some(keyword => normalized.includes(normalizeText(keyword)));
+  const q = normalizeText(userQuery);
+  return ORDER_KEYWORDS.some((kw) => q.includes(kw));
 };
 
-/**
- * Check if query is a greeting
- * @param {string} userQuery
- * @returns {boolean}
- */
 export const isGreeting = (userQuery) => {
-  const greetingKeywords = ['chào', 'hello', 'hi', 'xin chào', 'hey', 'alo', 'good morning', 'good afternoon'];
-  const normalized = normalizeText(userQuery);
-  return greetingKeywords.some(keyword => normalized.includes(normalizeText(keyword)));
+  const greetings = ['chao', 'hello', 'hi', 'xin chao', 'hey', 'alo'];
+  const q = normalizeText(userQuery);
+  return greetings.some((kw) => q.includes(kw));
 };
 
-/**
- * Get FAQ by intent
- * @param {string} intent
- * @returns {object|null}
- */
-export const getFAQByIntent = (intent) => {
-  return knowledgeBase.find(faq => faq.intent === intent) || null;
-};
-
-/**
- * Get all intents in a group
- * @param {string} groupName
- * @returns {string[]}
- */
-export const getIntentsInGroup = (groupName) => {
-  return intentGroups[groupName] || [];
-};
-
-export default { matchIntent, isOrderIntent, isGreeting, getFAQByIntent, getIntentsInGroup };
+export default { matchIntent, isOrderIntent, isGreeting };
