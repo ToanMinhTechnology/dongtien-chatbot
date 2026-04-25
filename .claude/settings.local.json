@@ -1,18 +1,41 @@
 {
   "permissions": {
     "allow": [
+      "Read(//c/Users/Hii/.claude/skills/gstack/**)",
+      "Bash(./setup)",
+      "Bash(~/.claude/skills/gstack/bin/gstack-config set *)",
+      "Bash(touch ~/.claude/skills/gstack/.feature-prompted-continuous-checkpoint)",
+      "Bash(~/.claude/skills/gstack/bin/gstack-builder-profile)",
+      "Bash(mkdir -p ~/.gstack/analytics)",
+      "Bash(echo '{\"skill\":\"office-hours\",\"event\":\"resources_shown\",\"count\":0,\"categories\":\"skipped\",\"ts\":\"2026-04-22T11:45:30Z\"}')",
+      "Bash(~/.claude/skills/gstack/bin/gstack-timeline-log '{\"skill\":\"office-hours\",\"event\":\"completed\",\"branch\":\"main\",\"outcome\":\"success\",\"duration_s\":\"1200\",\"session\":\"$$-1745319930\"}')",
+      "Bash(echo '{\"skill\":\"office-hours\",\"duration_s\":\"1200\",\"outcome\":\"success\",\"browse\":\"false\",\"session\":\"$$-1745319930\",\"ts\":\"2026-04-22T11:47:30Z\"}')",
       "Bash(npm run *)",
-      "Bash(curl -s http://localhost:3001/health)",
-      "Bash(netstat -ano)",
-      "Bash(taskkill //PID 1084 //F)",
       "Bash(npm install *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'WIP: Phase 1 - Decision tree FAQ + webhook order flow *)",
+      "Bash(git config *)",
+      "Bash(curl -s http://localhost:3001/health)",
+      "Bash(curl *)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(pkill node *)",
+      "Bash(killall node *)",
+      "Bash(git commit -m 'chore: switch fallback from Gemini to OpenAI API *)",
+      "Bash(node --env-file=.env --input-type=module)",
+      "Bash(node --env-file=.env scripts/crawl-vani.js)",
+      "Bash(node --input-type=module)",
+      "Bash(node -e ' *)",
+      "Bash(sed -i 's/Đồng Tiền sẽ gọi xác nhận trong 30 phút/Vani sẽ liên hệ xác nhận trong 30 phút/g' d:/dongtien-chatbot/src/components/OrderConfirmation.jsx d:/dongtien-chatbot/src/components/OrderForm.jsx)",
+      "Bash(sed -i 's/Đồng Tiền sẽ liên hệ xác nhận sớm nhất/Vani sẽ liên hệ xác nhận sớm nhất/g' d:/dongtien-chatbot/server/routes/order.js)",
+      "Bash(sed -i 's/liên hệ Zalo 0914 049 499/liên hệ Zalo 0935 226 206/g' d:/dongtien-chatbot/server/routes/order.js)",
+      "Bash(netstat -ano)",
       "Bash(node server/index.js)",
-      "Bash(curl -s -X POST http://localhost:3001/api/chat -H \"Content-Type: application/json\" -d '{\"history\":[{\"role\":\"user\",\"text\":\"tiệm ở đâu vậy\"}]}')",
-      "Bash(taskkill //PID 15356 //F)",
       "Bash(awk '{print $5}')",
       "Bash(xargs taskkill *)",
       "Bash(exit 0)",
-      "Bash(taskkill //PID 22248 //F)"
+      "Bash(node --input-type=module --eval \"import\\('./server/routes/chat.js'\\)\")",
+      "Bash(node --input-type=module --eval \"import\\('./server/routes/order.js'\\)\")",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('package.json','utf8'\\)\\)\")"
     ]
   }
 }

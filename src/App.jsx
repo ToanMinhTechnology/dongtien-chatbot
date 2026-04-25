@@ -22,15 +22,14 @@ const App = () => {
 
     // Get the latest user message
     const lastUserMessage = history[history.length - 1]?.text || "";
-    console.log("User message:", lastUserMessage);
+    if (import.meta.env.DEV) console.log("User message:", lastUserMessage);
 
-    // Step 1: Check intent matching FIRST (before calling Gemini)
+    // Step 1: Check intent matching FIRST (before calling OpenAI)
     const intentResult = matchIntent(lastUserMessage);
 
     if (intentResult.match) {
       console.log("Intent matched:", intentResult.intent, "confidence:", intentResult.confidence);
-      trackEvent('FAQ_ANSWERED', { intent: intentResult.intent });
-      trackEvent('INTENT_MATCH', { intent: intentResult.intent, confidence: intentResult.confidence });
+      trackEvent('FAQ_ANSWERED', { intent: intentResult.intent, confidence: intentResult.confidence });
       updateHistory(intentResult.answer);
       return;
     }
@@ -51,11 +50,12 @@ const App = () => {
       return;
     }
 
-    // Step 3: Fall back to OpenAI via server
+    // Step 3: Fall back to OpenAI via server (API key stays server-side)
     trackEvent('OPENAI_FALLBACK', { query: lastUserMessage });
     try {
-      const response = await axios.post('http://localhost:3001/api/chat', { history });
-      const botText = response.data.reply;
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${apiUrl}/api/chat`, { history });
+      const botText = response.data.reply || "Xin lỗi, mình chưa hiểu câu hỏi. Bạn chat Zalo **0935 226 206** để được hỗ trợ nha!";
       updateHistory(botText);
 
     } catch (error) {
@@ -68,7 +68,8 @@ const App = () => {
   const handleOrderConfirm = async (orderDetails) => {
     try {
       // Send to webhook
-      const response = await axios.post('http://localhost:3001/api/order', orderDetails);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${apiUrl}/api/order`, orderDetails);
 
       if (response.data.success) {
         trackEvent('ORDER_CONFIRMED', {
@@ -78,13 +79,20 @@ const App = () => {
 
         setChatHistory((prev) => [...prev, {
           role: "model",
-          text: `✅ **ĐẶT BÁNH THÀNH CÔNG!**\n\nMã đơn: ${response.data.orderId}\n\nĐồng Tiền sẽ gọi xác nhận trong 30 phút.\n\nCảm ơn bạn! 🎂`,
+          text: `✅ **ĐẶT BÁNH THÀNH CÔNG!**\n\nMã đơn: ${response.data.orderId}\n\nVani sẽ gọi xác nhận trong 30 phút.\n\nCảm ơn bạn! 🎂`,
           isOrder: false
         }]);
         setPendingOrder(null);
+      } else {
+        setPendingOrder(null);
+        setChatHistory((prev) => [...prev, {
+          role: "model",
+          text: "❌ **Có lỗi xảy ra!**\n\nVui lòng liên hệ Zalo **0935226206** để đặt bánh trực tiếp nha!"
+        }]);
       }
     } catch (error) {
       console.error("Order confirm error:", error);
+      setPendingOrder(null);
       setChatHistory((prev) => [...prev, {
         role: "model",
         text: "❌ **Có lỗi xảy ra!**\n\nVui lòng liên hệ Zalo **0935226206** để đặt bánh trực tiếp nha!"
@@ -95,7 +103,7 @@ const App = () => {
   // Handle Zalo redirect
   const handleChatZalo = () => {
     trackEvent('ZALO_REDIRECT', { source: 'chatbot' });
-    window.open('https://zalo.me/0935226206', '_blank');
+    window.open('https://zalo.me/0935226206', '_blank', 'noopener,noreferrer');
   };
 
   // Handle order cancellation
@@ -103,7 +111,7 @@ const App = () => {
     setPendingOrder(null);
     setChatHistory((prev) => [...prev, {
       role: "model",
-      text: "Đã hủy đặt bánh. Bạn có thể hỏi mình về bánh khác hoặc liên hệ Zalo 0935226206 nha! 🎂"
+      text: "Đã hủy đặt bánh. Bạn có thể hỏi mình về bánh khác hoặc liên hệ Zalo **0935 226 206** nha! 🎂"
     }]);
   };
 
@@ -134,7 +142,7 @@ const App = () => {
         zIndex: 10,
         pointerEvents: 'none',
       }}>
-        Chào mừng đến Đồng Tiền Bakery!<br/>
+        Chào mừng đến Tiệm Bánh Vani!<br/>
         Hỏi về bánh kem, đặt hàng ngay!
       </div>
       <div className={`container ${showChatbot ? 'show' : ''}`}>
@@ -148,7 +156,7 @@ const App = () => {
           <div className="chat-header">
             <div className="header-info">
               <ChatbotIcon />
-              <h3>Đồng Tiền Bakery</h3>
+              <h3>Tiệm Bánh Vani</h3>
               <p>Online</p>
             </div>
             <button
@@ -165,8 +173,8 @@ const App = () => {
               <ChatbotIcon></ChatbotIcon>
               <p className="message-text">
                 Chào bạn! 🎂<br />
-                Mình là chatbot của Đồng Tiền Bakery!<br />
-                Hỏi mình về giá bánh, cách đặt hàng, giao hàng... nhé!
+                Mình là chatbot của Tiệm Bánh Vani!<br />
+                Hỏi mình về bánh kem, mousse, cách đặt hàng, giao hàng... nhé!
               </p>
             </div>
 
