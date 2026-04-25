@@ -24,17 +24,8 @@ const App = () => {
     const lastUserMessage = history[history.length - 1]?.text || "";
     if (import.meta.env.DEV) console.log("User message:", lastUserMessage);
 
-    // Step 1: Check intent matching FIRST (before calling OpenAI)
-    const intentResult = matchIntent(lastUserMessage);
-
-    if (intentResult.match) {
-      console.log("Intent matched:", intentResult.intent, "confidence:", intentResult.confidence);
-      trackEvent('FAQ_ANSWERED', { intent: intentResult.intent, confidence: intentResult.confidence });
-      updateHistory(intentResult.answer);
-      return;
-    }
-
-    // Step 2: Check if order intent
+    // Step 1: Order intent takes priority over FAQ — prevents "cách đặt bánh" FAQ
+    // from intercepting explicit order requests like "muốn đặt bánh" or "order ngay"
     if (isOrderIntent(lastUserMessage)) {
       trackEvent('ORDER_INITIATED', { query: lastUserMessage });
       // Show order confirmation UI with empty form
@@ -47,6 +38,16 @@ const App = () => {
         deliveryAddress: '',
         notes: ''
       });
+      return;
+    }
+
+    // Step 2: Check FAQ intent matching (before calling OpenAI)
+    const intentResult = matchIntent(lastUserMessage);
+
+    if (intentResult.match) {
+      console.log("Intent matched:", intentResult.intent, "confidence:", intentResult.confidence);
+      trackEvent('FAQ_ANSWERED', { intent: intentResult.intent, confidence: intentResult.confidence });
+      updateHistory(intentResult.answer);
       return;
     }
 
