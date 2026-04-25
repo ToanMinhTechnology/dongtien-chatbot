@@ -51,24 +51,11 @@ const App = () => {
       return;
     }
 
-    // Step 3: Fall back to Gemini API
-    trackEvent('GEMINI_FALLBACK', { query: lastUserMessage });
+    // Step 3: Fall back to OpenAI via server
+    trackEvent('OPENAI_FALLBACK', { query: lastUserMessage });
     try {
-      history = history.map(({ role, text }) => ({role,parts:[{text}]}));
-      console.log("Sending history to Gemini API", history)
-
-      const response = await axios.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
-        { contents: history },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "x-goog-api-key": import.meta.env.VITE_GEMINI_API_KEY,
-          },
-        }
-      );
-
-      const botText = response.data.candidates[0]?.content?.parts[0]?.text.trim();
+      const response = await axios.post('http://localhost:3001/api/chat', { history });
+      const botText = response.data.reply;
       updateHistory(botText);
 
     } catch (error) {

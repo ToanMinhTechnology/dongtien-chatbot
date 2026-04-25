@@ -4,7 +4,15 @@
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:3001/health)",
       "Bash(netstat -ano)",
-      "Bash(taskkill //PID 1084 //F)"
+      "Bash(taskkill //PID 1084 //F)",
+      "Bash(npm install *)",
+      "Bash(node server/index.js)",
+      "Bash(curl -s -X POST http://localhost:3001/api/chat -H \"Content-Type: application/json\" -d '{\"history\":[{\"role\":\"user\",\"text\":\"tiệm ở đâu vậy\"}]}')",
+      "Bash(taskkill //PID 15356 //F)",
+      "Bash(awk '{print $5}')",
+      "Bash(xargs taskkill *)",
+      "Bash(exit 0)",
+      "Bash(taskkill //PID 22248 //F)"
     ]
   }
 }
