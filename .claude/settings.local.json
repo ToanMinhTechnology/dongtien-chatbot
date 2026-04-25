@@ -35,7 +35,8 @@
       "Bash(exit 0)",
       "Bash(node --input-type=module --eval \"import\\('./server/routes/chat.js'\\)\")",
       "Bash(node --input-type=module --eval \"import\\('./server/routes/order.js'\\)\")",
-      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('package.json','utf8'\\)\\)\")"
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('package.json','utf8'\\)\\)\")",
+      "Bash(git commit -m ' *)"
     ]
   }
 }

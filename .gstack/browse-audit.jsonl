@@ -69,3 +69,35 @@
 {"ts":"2026-04-24T23:17:58.378Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":53,"status":"ok","hasCookies":false,"mode":"launched"}
 {"ts":"2026-04-24T23:18:06.670Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-openai-fallback2.png","origin":"http://localhost:5174/","durationMs":137,"status":"ok","hasCookies":false,"mode":"launched"}
 {"ts":"2026-04-24T23:18:06.809Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:55:33.688Z","cmd":"goto","args":"http://localhost:5173","origin":"http://localhost:5173/","durationMs":3040,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:55:40.109Z","cmd":"snapshot","args":"-i -a -o d:/dongtien-chatbot/.gstack/qa-reports/screenshots/initial.png","origin":"http://localhost:5173/","durationMs":76,"status":"error","hasCookies":false,"mode":"launched","error":"Path must be within: C:\\Users\\Hii\\AppData\\Local\\Temp, D:\\dongtien-chatbot"}
+{"ts":"2026-04-25T08:55:44.418Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/initial.png","origin":"http://localhost:5173/","durationMs":259,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:55:55.339Z","cmd":"console","args":"--errors","origin":"http://localhost:5173/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:01.497Z","cmd":"click","args":"@e1","origin":"http://localhost:5173/","durationMs":42,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:01.989Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/chatbot-open.png","origin":"http://localhost:5173/","durationMs":250,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:12.608Z","cmd":"fill","args":"@e3 Giá bánh kem bao nhiêu?","origin":"http://localhost:5173/","durationMs":17,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:12.872Z","cmd":"click","args":"@e4","origin":"http://localhost:5173/","durationMs":111,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:15.394Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/faq-price.png","origin":"http://localhost:5173/","durationMs":250,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:15.612Z","cmd":"console","args":"--errors","origin":"http://localhost:5173/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:45.499Z","cmd":"js","args":"document.querySelector('.chat-body').scrollTop = 0","origin":"http://localhost:5173/","durationMs":5,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:56:46.344Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/chat-scrolled-top.png","origin":"http://localhost:5173/","durationMs":151,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:10.378Z","cmd":"js","args":"document.querySelector('.chat-body').scrollTop = document.querySelector('.chat-body').scrollHeight","origin":"http://localhost:5173/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:11.020Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/faq-price-full.png","origin":"http://localhost:5173/","durationMs":158,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:24.217Z","cmd":"fill","args":"@e3 Mình muốn đặt bánh","origin":"http://localhost:5173/","durationMs":11,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:24.438Z","cmd":"click","args":"@e4","origin":"http://localhost:5173/","durationMs":83,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:26.296Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/order-trigger.png","origin":"http://localhost:5173/","durationMs":302,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:53.872Z","cmd":"js","args":"document.querySelector('.chat-body').scrollTop = document.querySelector('.chat-body').scrollHeight","origin":"http://localhost:5173/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:57:54.615Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/order-below-fold.png","origin":"http://localhost:5173/","durationMs":295,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:19.980Z","cmd":"fill","args":"@e3 order ngay","origin":"http://localhost:5173/","durationMs":9,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:20.171Z","cmd":"click","args":"@e4","origin":"http://localhost:5173/","durationMs":53,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:21.572Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/order-keyword.png","origin":"http://localhost:5173/","durationMs":244,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:40.912Z","cmd":"fill","args":"@e3 ","origin":"http://localhost:5173/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Usage: browse fill <selector> <value>"}
+{"ts":"2026-04-25T08:58:41.079Z","cmd":"click","args":"@e4","origin":"http://localhost:5173/","durationMs":23,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:41.737Z","cmd":"console","args":"--errors","origin":"http://localhost:5173/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:51.442Z","cmd":"click","args":"@e2","origin":"http://localhost:5173/","durationMs":84,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:58:52.371Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/chatbot-closed.png","origin":"http://localhost:5173/","durationMs":216,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:59:36.147Z","cmd":"click","args":"@e1","origin":"http://localhost:5173/","durationMs":48,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:59:37.019Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/chatbot-reopened.png","origin":"http://localhost:5173/","durationMs":201,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:59:47.354Z","cmd":"viewport","args":"375x812","origin":"http://localhost:5173/","durationMs":6,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T08:59:47.571Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/mobile-view.png","origin":"http://localhost:5173/","durationMs":69,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-25T09:00:03.612Z","cmd":"viewport","args":"1280x720","origin":"http://localhost:5173/","durationMs":73,"status":"ok","hasCookies":false,"mode":"launched"}
