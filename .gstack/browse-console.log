@@ -1,0 +1,61 @@
+[2026-04-24T23:07:06.920Z] [debug] [vite] connecting...
+[2026-04-24T23:07:06.993Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:07:07.198Z] [debug] [vite] connected.
+[2026-04-24T23:07:43.928Z] [log] User message: bánh kem giá bao nhiêu
+[2026-04-24T23:07:43.939Z] [log] [ANALYTICS] OPENAI_FALLBACK: {query: bánh kem giá bao nhiêu}
+[2026-04-24T23:07:43.980Z] [error] Access to XMLHttpRequest at 'http://localhost:3001/api/chat' from origin 'http://localhost:5174' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: The 'Access-Control-Allow-Origin' header has a value 'http://localhost:5173' that is not equal to the supplied origin.
+[2026-04-24T23:07:43.980Z] [error] Error generating bot response: AxiosError: Network Error
+    at XMLHttpRequest.handleError (http://localhost:5174/node_modules/.vite/deps/axios.js?v=6c20f766:1742:19)
+[2026-04-24T23:07:43.984Z] [error] Failed to load resource: net::ERR_FAILED
+[2026-04-24T23:11:47.095Z] [error] [vite] SyntaxError: The requested module '/src/data/knowledgeBase.js?t=1777072306885' does not provide an export named 'intentGroups'
+[2026-04-24T23:11:47.095Z] [error] [vite] Failed to reload /src/App.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2026-04-24T23:11:47.095Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-04-24T23:12:02.296Z] [debug] [vite] hot updated: /src/App.jsx
+[2026-04-24T23:12:24.876Z] [debug] [vite] connecting...
+[2026-04-24T23:12:24.879Z] [debug] [vite] connected.
+[2026-04-24T23:12:24.897Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:13:17.434Z] [debug] [vite] connecting...
+[2026-04-24T23:13:17.442Z] [debug] [vite] connected.
+[2026-04-24T23:13:17.455Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:13:27.829Z] [clear] console.clear
+[2026-04-24T23:13:28.029Z] [debug] [vite] connecting...
+[2026-04-24T23:13:28.035Z] [debug] [vite] connected.
+[2026-04-24T23:13:28.040Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:13:56.459Z] [log] User message: bánh kem giá bao nhiêu
+[2026-04-24T23:13:56.460Z] [log] Intent matched: banh kem sinh nhat co nhung loai gi confidence: 0.76
+[2026-04-24T23:13:56.461Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh kem sinh nhat co nhung loai gi}
+[2026-04-24T23:13:56.461Z] [log] [ANALYTICS] INTENT_MATCH: {intent: banh kem sinh nhat co nhung loai gi, confidence: 0.76}
+[2026-04-24T23:15:52.497Z] [debug] [vite] hot updated: /src/components/ChatForm.jsx
+[2026-04-24T23:16:05.008Z] [debug] [vite] connecting...
+[2026-04-24T23:16:05.011Z] [debug] [vite] connected.
+[2026-04-24T23:16:05.054Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:16:15.014Z] [log] User message: bánh kem giá bao nhiêu
+[2026-04-24T23:16:15.022Z] [log] Intent matched: banh kem sinh nhat co nhung loai gi confidence: 0.76
+[2026-04-24T23:16:15.022Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh kem sinh nhat co nhung loai gi}
+[2026-04-24T23:16:15.024Z] [log] [ANALYTICS] INTENT_MATCH: {intent: banh kem sinh nhat co nhung loai gi, confidence: 0.76}
+[2026-04-24T23:16:27.714Z] [log] User message: địa chỉ tiệm ở đâu
+[2026-04-24T23:16:27.714Z] [log] Intent matched: ia chi tiem banh vani o au confidence: 0.76
+[2026-04-24T23:16:27.714Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: ia chi tiem banh vani o au}
+[2026-04-24T23:16:27.714Z] [log] [ANALYTICS] INTENT_MATCH: {intent: ia chi tiem banh vani o au, confidence: 0.76}
+[2026-04-24T23:16:38.144Z] [log] User message: phí ship bao nhiêu
+[2026-04-24T23:16:38.145Z] [log] Intent matched: gia banh kem tai vani bao nhieu confidence: 0.7
+[2026-04-24T23:16:38.145Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: gia banh kem tai vani bao nhieu}
+[2026-04-24T23:16:38.145Z] [log] [ANALYTICS] INTENT_MATCH: {intent: gia banh kem tai vani bao nhieu, confidence: 0.7}
+[2026-04-24T23:16:40.495Z] [log] User message: đặt bánh trước bao lâu
+[2026-04-24T23:16:40.501Z] [log] Intent matched: cach at banh tai vani confidence: 0.6666666666666666
+[2026-04-24T23:16:40.502Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: cach at banh tai vani}
+[2026-04-24T23:16:40.502Z] [log] [ANALYTICS] INTENT_MATCH: {intent: cach at banh tai vani, confidence: 0.6666666666666666}
+[2026-04-24T23:17:13.640Z] [debug] [vite] connecting...
+[2026-04-24T23:17:13.643Z] [debug] [vite] connected.
+[2026-04-24T23:17:13.666Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:17:34.827Z] [debug] [vite] connecting...
+[2026-04-24T23:17:34.835Z] [debug] [vite] connected.
+[2026-04-24T23:17:34.852Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-24T23:17:37.714Z] [log] User message: trang trí bánh kem bằng hoa tươi được không
+[2026-04-24T23:17:37.714Z] [log] Intent matched: banh kem sinh nhat co nhung loai gi confidence: 0.76
+[2026-04-24T23:17:37.715Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh kem sinh nhat co nhung loai gi}
+[2026-04-24T23:17:37.718Z] [log] [ANALYTICS] INTENT_MATCH: {intent: banh kem sinh nhat co nhung loai gi, confidence: 0.76}
+[2026-04-24T23:17:58.346Z] [log] User message: nên kết hợp màu gì cho buổi tiệc chủ đề vintage
+[2026-04-24T23:17:58.347Z] [log] Intent matched: banh cho su kien cong ty confidence: 0.6666666666666666
+[2026-04-24T23:17:58.347Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh cho su kien cong ty}
+[2026-04-24T23:17:58.347Z] [log] [ANALYTICS] INTENT_MATCH: {intent: banh cho su kien cong ty, confidence: 0.6666666666666666}

@@ -1,0 +1,71 @@
+{"ts":"2026-04-24T23:07:07.059Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":2728,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:12.870Z","cmd":"snapshot","args":"-i -a -o d:/dongtien-chatbot/.gstack/qa-reports/screenshots/initial.png","origin":"http://localhost:5174/","durationMs":48,"status":"error","hasCookies":false,"mode":"launched","error":"Path must be within: C:\\Users\\Hii\\AppData\\Local\\Temp, D:\\dongtien-chatbot"}
+{"ts":"2026-04-24T23:07:19.051Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/initial.png","origin":"http://localhost:5174/","durationMs":192,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:30.427Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:33.645Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":45,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:35.000Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/chatbot-open.png","origin":"http://localhost:5174/","durationMs":186,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:43.676Z","cmd":"fill","args":"@e3 bánh kem giá bao nhiêu","origin":"http://localhost:5174/","durationMs":31,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:44.007Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":159,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:48.275Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/test-price-query.png","origin":"http://localhost:5174/","durationMs":386,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:07:48.558Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:08:21.245Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/issue-001-before.png","origin":"http://localhost:5174/","durationMs":125,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:12:24.897Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":133,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:12:26.111Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e1 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:12:27.288Z","cmd":"fill","args":"@e3 bánh kem giá bao nhiêu","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e3 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:12:27.394Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e4 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:12:30.704Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/issue-001-after.png","origin":"http://localhost:5174/","durationMs":170,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:12:30.832Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:17.338Z","cmd":"js","args":"location.reload(true)","origin":"http://localhost:5174/","durationMs":5,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:20.667Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":18,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:20.792Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:27.829Z","cmd":"js","args":"console.clear()","origin":"http://localhost:5174/","durationMs":2,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:28.041Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":87,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:30.187Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:38.738Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e1 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:13:39.924Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":16,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:40.044Z","cmd":"fill","args":"@e3 bánh kem giá bao nhiêu","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e3 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:13:40.150Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e4 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:13:44.478Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/issue-001-verified.png","origin":"http://localhost:5174/","durationMs":184,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:44.627Z","cmd":"js","args":"window.__newErrors = []; const origError = console.error; console.error = function() { window.__newErrors.push(Array.from(arguments).join(' ')); origError.apply(console, arguments); }; window.__newErr…","origin":"http://localhost:5174/","durationMs":4,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:51.323Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":42,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:51.497Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":31,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:52.707Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":10,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:56.252Z","cmd":"fill","args":"@e3 bánh kem giá bao nhiêu","origin":"http://localhost:5174/","durationMs":11,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:13:56.501Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":83,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:14:00.878Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/issue-001-verified.png","origin":"http://localhost:5174/","durationMs":212,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:14:26.527Z","cmd":"snapshot","args":"-i -a -o D:/dongtien-chatbot/.gstack/qa-reports/screenshots/issue-001-final.png","origin":"http://localhost:5174/","durationMs":204,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:14:26.670Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:05.054Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":237,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:07.350Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":22,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:07.518Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":26,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:08.696Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":9,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:14.851Z","cmd":"fill","args":"@e3 bánh kem giá bao nhiêu","origin":"http://localhost:5174/","durationMs":8,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:15.055Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":75,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:17.385Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-test-price.png","origin":"http://localhost:5174/","durationMs":162,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:17.613Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:27.567Z","cmd":"fill","args":"@e3 địa chỉ tiệm ở đâu","origin":"http://localhost:5174/","durationMs":9,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:27.737Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":38,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:30.006Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-test-address.png","origin":"http://localhost:5174/","durationMs":126,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:38.006Z","cmd":"fill","args":"@e3 phí ship bao nhiêu","origin":"http://localhost:5174/","durationMs":12,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:38.179Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":51,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:40.350Z","cmd":"fill","args":"@e3 đặt bánh trước bao lâu","origin":"http://localhost:5174/","durationMs":9,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:40.542Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":64,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:16:42.948Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-test-delivery-leadtime.png","origin":"http://localhost:5174/","durationMs":237,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:13.454Z","cmd":"viewport","args":"375x812","origin":"http://localhost:5174/","durationMs":7,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:13.667Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":105,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:14.943Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/mobile-homepage.png","origin":"http://localhost:5174/","durationMs":68,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:15.063Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":0,"status":"error","hasCookies":false,"mode":"launched","error":"Ref @e1 not found. Run 'snapshot' to get fresh refs."}
+{"ts":"2026-04-24T23:17:16.292Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/mobile-chatbot.png","origin":"http://localhost:5174/","durationMs":67,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:16.432Z","cmd":"viewport","args":"1280x720","origin":"http://localhost:5174/","durationMs":2,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:34.852Z","cmd":"goto","args":"http://localhost:5174","origin":"http://localhost:5174/","durationMs":101,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:36.072Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":16,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:36.200Z","cmd":"click","args":"@e1","origin":"http://localhost:5174/","durationMs":27,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:37.375Z","cmd":"snapshot","args":"-i","origin":"http://localhost:5174/","durationMs":9,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:37.526Z","cmd":"fill","args":"@e3 trang trí bánh kem bằng hoa tươi được không","origin":"http://localhost:5174/","durationMs":10,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:37.743Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":77,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:44.064Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-openai-fallback.png","origin":"http://localhost:5174/","durationMs":137,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:44.195Z","cmd":"js","args":"performance.getEntriesByType('resource').filter(r => r.initiatorType === 'xmlhttprequest' && r.name.includes('3001')).map(r => r.name + ' ' + r.responseStatus)","origin":"http://localhost:5174/","durationMs":1,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:58.180Z","cmd":"fill","args":"@e3 nên kết hợp màu gì cho buổi tiệc chủ đề vintage","origin":"http://localhost:5174/","durationMs":12,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:17:58.378Z","cmd":"click","args":"@e4","origin":"http://localhost:5174/","durationMs":53,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:18:06.670Z","cmd":"screenshot","args":"D:/dongtien-chatbot/.gstack/qa-reports/screenshots/final-openai-fallback2.png","origin":"http://localhost:5174/","durationMs":137,"status":"ok","hasCookies":false,"mode":"launched"}
+{"ts":"2026-04-24T23:18:06.809Z","cmd":"console","args":"--errors","origin":"http://localhost:5174/","durationMs":0,"status":"ok","hasCookies":false,"mode":"launched"}

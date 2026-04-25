@@ -2,7 +2,6 @@
 // No database in Phase 1 - just webhook notifications
 
 import { Router } from 'express';
-import { trackEvent } from '../src/utils/analytics.js';
 
 export const orderRouter = Router();
 
@@ -48,12 +47,7 @@ orderRouter.post('/order', async (req, res) => {
     console.log(`⏰ Time: ${order.createdAt}`);
     console.log('═══════════════════════════════════════');
 
-    // Track analytics
-    trackEvent('ORDER_CONFIRMED', {
-      orderId: order.id,
-      product: order.product,
-      customerName: order.customerName
-    });
+    console.log(`✅ ORDER_CONFIRMED: ${order.id} — ${order.product}`);
 
     // Response
     res.status(201).json({

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3001/health)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 1084 //F)"
+    ]
+  }
+}
