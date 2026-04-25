@@ -448,8 +448,7 @@ export const knowledgeBase = {
         "bánh kem",
         "bánh sinh nhật",
         "kem sinh nhật",
-        "birthday cake",
-        "kem"
+        "birthday cake"
       ]
     },
     {
