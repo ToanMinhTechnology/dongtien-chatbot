@@ -8,6 +8,7 @@ const faqs = knowledgeBase.faqs ?? [];
 const normalizeText = (text) =>
   text
     .toLowerCase()
+    .replace(/đ/g, 'd')   // đ (U+0111) doesn't decompose via NFD — must replace before stripping
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .replace(/[^\w\s]/g, ' ')
@@ -65,6 +66,7 @@ export const matchIntent = (userQuery) => {
 const ORDER_KEYWORDS = [
   'dat ngay', 'dat banh ngay', 'mua ngay', 'order ngay',
   'muon dat', 'can dat', 'order', 'dat hang',
+  'muon mua', 'cho toi dat',
 ];
 
 export const isOrderIntent = (userQuery) => {
