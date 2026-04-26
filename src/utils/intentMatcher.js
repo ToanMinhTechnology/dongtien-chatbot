@@ -67,10 +67,15 @@ const ORDER_KEYWORDS = [
   'dat ngay', 'dat banh ngay', 'mua ngay', 'order ngay',
   'muon dat', 'can dat', 'order', 'dat hang',
   'muon mua', 'cho toi dat',
+  'cho minh dat',   // "cho mình đặt"
+  'minh muon dat',  // "mình muốn đặt"
+  'muon order',     // "muốn order"
 ];
 
 export const isOrderIntent = (userQuery) => {
   const q = normalizeText(userQuery);
+  // "cần đặt trước" is a lead-time question, not an order intent
+  if (q.includes('can dat truoc')) return false;
   return ORDER_KEYWORDS.some((kw) => q.includes(kw));
 };
 

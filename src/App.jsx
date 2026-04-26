@@ -30,7 +30,24 @@ const App = () => {
     // from intercepting explicit order requests like "muốn đặt bánh" or "order ngay"
     if (isOrderIntent(lastUserMessage)) {
       trackEvent('ORDER_INITIATED', { query: lastUserMessage });
-      // Show order confirmation UI with empty form
+
+      // Answer any embedded non-order question in the message first (spec step 1)
+      // e.g. "muốn đặt bánh, cần trước mấy ngày?" → answer 1-2 ngày, then show form
+      const embeddedMatch = matchIntent(lastUserMessage);
+      const ORDER_FAQ_QUESTIONS = ['Muốn đặt bánh ngay', 'Cách đặt bánh tại Vani'];
+      const hasEmbeddedAnswer =
+        embeddedMatch.match && !ORDER_FAQ_QUESTIONS.includes(embeddedMatch.question);
+
+      const ORDER_INTRO =
+        '🎂 **Bạn muốn đặt bánh!**\n\nMình giúp bạn điền thông tin dưới đây để Vani chuẩn bị nhé! Đặt trước **1–2 ngày** để đảm bảo bánh đẹp.';
+
+      const introText = hasEmbeddedAnswer
+        ? `${embeddedMatch.answer}\n\n---\n\n${ORDER_INTRO}`
+        : ORDER_INTRO;
+
+      // Replace "Thinking..." with the intro message (spec step 2)
+      updateHistory(introText);
+
       setPendingOrder({
         customerName: '',
         phone: '',

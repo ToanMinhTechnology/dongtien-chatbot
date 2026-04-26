@@ -36,6 +36,15 @@ describe('isOrderIntent', () => {
     expect(isOrderIntent('cách đặt bánh là gì')).toBe(false)
   })
 
+  it('returns false for "cần đặt trước mấy ngày" — lead-time question, not order intent', () => {
+    expect(isOrderIntent('Cần đặt trước mấy ngày?')).toBe(false)
+  })
+
+  it('returns true for "cần đặt bánh gấp" — genuine order with can dat keyword', () => {
+    // "cần đặt trước" exclusion must NOT block "cần đặt bánh gấp"
+    expect(isOrderIntent('cần đặt bánh gấp')).toBe(true)
+  })
+
   it('returns false for empty string', () => {
     expect(isOrderIntent('')).toBe(false)
   })

@@ -210,7 +210,7 @@ const OrderForm = ({ onSubmit, onCancel, onChatZalo }) => {
             marginBottom: '8px'
           }}
         >
-          ✓ XÁC NHẬN ĐẶT BÁNH
+          Tiếp tục xem lại đơn hàng →
         </button>
       </form>
 
