@@ -8,7 +8,7 @@ import axios from "axios";
 import { matchIntent, isOrderIntent } from "./utils/intentMatcher.js";
 import { trackEvent } from "./utils/analytics.js";
 
-const API_URL = API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
