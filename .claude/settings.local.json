@@ -41,7 +41,8 @@
       "Bash(git push *)",
       "Bash(gh pr create --title 'feat: chatbot improvements — OpenAI integration, security hardening, a11y, tests' --body ' *)",
       "Bash(where gh *)",
-      "Bash(winget list *)"
+      "Bash(winget list *)",
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)"
     ]
   }
 }

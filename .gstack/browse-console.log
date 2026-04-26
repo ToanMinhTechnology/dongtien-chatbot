@@ -1,17 +1,27 @@
-[2026-04-25T08:55:33.610Z] [debug] [vite] connecting...
-[2026-04-25T08:55:33.650Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[2026-04-25T08:55:33.763Z] [debug] [vite] connected.
-[2026-04-25T08:56:12.811Z] [log] User message: Giá bánh kem bao nhiêu?
-[2026-04-25T08:56:12.868Z] [log] Intent matched: banh kem sinh nhat co nhung loai gi confidence: 0.76
-[2026-04-25T08:56:12.869Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh kem sinh nhat co nhung loai gi, confidence: 0.76}
-[2026-04-25T08:57:24.373Z] [log] User message: Mình muốn đặt bánh
-[2026-04-25T08:57:24.373Z] [log] Intent matched: muon at banh ngay confidence: 0.6799999999999999
-[2026-04-25T08:57:24.374Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: muon at banh ngay, confidence: 0.6799999999999999}
-[2026-04-25T08:58:20.139Z] [log] User message: order ngay
-[2026-04-25T08:58:20.140Z] [log] Intent matched: can banh gap uoc khong confidence: 0.72
-[2026-04-25T08:58:20.140Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: can banh gap uoc khong, confidence: 0.72}
-[2026-04-25T09:00:11.157Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-04-25T09:00:13.453Z] [debug] [vite] hot updated: /src/App.jsx
-[2026-04-25T09:17:35.873Z] [log] [vite] server connection lost. Polling for restart...
-[2026-04-25T09:17:35.877Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED
-[2026-04-25T09:17:37.079Z] [error] WebSocket connection to 'ws://localhost:5173/' failed: Error in connection establishment: net::ERR_NETWORK_IO_SUSPENDED
+[2026-04-26T07:29:49.130Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:29:49.266Z] [log] [HMR] connected
+[2026-04-26T07:30:01.251Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:30:01.522Z] [log] [HMR] connected
+[2026-04-26T07:30:02.195Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:30:02.392Z] [log] [HMR] connected
+[2026-04-26T07:30:07.578Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:30:07.777Z] [log] [HMR] connected
+[2026-04-26T07:32:56.909Z] [debug] [vite] connecting...
+[2026-04-26T07:32:56.944Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:32:57.025Z] [debug] [vite] connected.
+[2026-04-26T07:35:00.575Z] [debug] [vite] connecting...
+[2026-04-26T07:35:00.584Z] [debug] [vite] connected.
+[2026-04-26T07:35:00.622Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:35:46.091Z] [debug] [vite] connecting...
+[2026-04-26T07:35:46.093Z] [debug] [vite] connected.
+[2026-04-26T07:35:46.156Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:38:06.148Z] [debug] [vite] connecting...
+[2026-04-26T07:38:06.157Z] [debug] [vite] connected.
+[2026-04-26T07:38:06.179Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:39:03.206Z] [debug] [vite] connecting...
+[2026-04-26T07:39:03.208Z] [debug] [vite] connected.
+[2026-04-26T07:39:03.215Z] [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[2026-04-26T07:39:06.179Z] [log] User message: Bánh kem chocolate bao nhiêu tiền?
+[2026-04-26T07:39:06.180Z] [log] Intent matched: banh kem sinh nhat co nhung loai gi confidence: 0.7
+[2026-04-26T07:39:06.185Z] [log] [ANALYTICS] FAQ_ANSWERED: {intent: banh kem sinh nhat co nhung loai gi, confidence: 0.7}
+[2026-04-26T08:02:44.422Z] [debug] [vite] hot updated: /src/App.jsx

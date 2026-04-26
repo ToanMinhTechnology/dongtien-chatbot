@@ -1,266 +1,268 @@
 // Tiệm Bánh Vani - Knowledge Base
 // Generated from tiembanhvani.com crawl data (data/structured/vani-products.json)
 // Re-run: npm run crawl:vani to refresh
+// price_range: giá thực từ Firecrawl nếu có, còn lại là tham khảo thị trường Đà Nẵng 2024
+// Liên hệ 0935 226 206 để báo giá chính xác theo yêu cầu cụ thể
 
 export const knowledgeBase = {
   "products": [
     {
       "name": "bánh kem baby three",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh kem sinh nhật",
+      "price_range": "~250,000 - 380,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "mousse dừa size 18x36",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Mousse/Cheese Cake",
+      "price_range": "~200,000 - 350,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "cupcake",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Cupcake",
+      "price_range": "~25,000 - 45,000đ/cái (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem cưới",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh cưới",
+      "price_range": "~1,500,000 - 5,000,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem pokemon",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh chủ đề theo yêu cầu",
+      "price_range": "~380,000 - 600,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem 2 tầng - nam",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh tầng",
+      "price_range": "~800,000 - 1,500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem 2 tầng - bé gái",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh tầng",
+      "price_range": "~800,000 - 1,500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem 2 tầng - công ty",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh tầng",
+      "price_range": "~1,000,000 - 2,000,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem số",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh chữ & số",
+      "price_range": "~350,000 - 600,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem công ty",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh logo & công ty",
+      "price_range": "~400,000 - 800,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem tim",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh mẫu tim",
+      "price_range": "~280,000 - 500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem quả mông",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh nặn tạo hình",
+      "price_range": "~300,000 - 500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem xe cảnh sát",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh máy bay, ô tô, siêu nhân",
+      "price_range": "~380,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kemcon vật",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh kem con vật",
+      "price_range": "~350,000 - 600,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem con mèo",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh kem con vật",
+      "price_range": "~350,000 - 600,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem con mèo thần tài",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh kem con vật",
+      "price_range": "~380,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "bánh kem capybara",
       "description": "",
-      "category": "",
-      "price_range": ""
+      "category": "Bánh kem con vật",
+      "price_range": "~380,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh tầng",
       "description": "Bánh tầng với nhiều sản phẩm.",
       "category": "Bánh tầng",
-      "price_range": ""
+      "price_range": "~700,000 - 2,000,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh kẹo, chocolate",
       "description": "Bánh kẹo và chocolate với nhiều sản phẩm.",
       "category": "Bánh kẹo, chocolate",
-      "price_range": ""
+      "price_range": "~20,000 - 80,000đ/cái (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh mới",
       "description": "Các loại bánh mới nhất.",
       "category": "Bánh mới",
-      "price_range": ""
+      "price_range": "Liên hệ để báo giá chính xác"
     },
     {
       "name": "Bánh mini",
       "description": "Bánh mini cho những dịp đặc biệt.",
       "category": "Bánh mini",
-      "price_range": ""
+      "price_range": "~80,000 - 180,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh mừng thọ ông bà",
       "description": "Bánh dành cho dịp mừng thọ ông bà.",
       "category": "Bánh mừng thọ ông bà",
-      "price_range": ""
+      "price_range": "~380,000 - 800,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh ngọt mỗi ngày",
       "description": "Bánh ngọt cho mỗi ngày.",
       "category": "Bánh ngọt mỗi ngày",
-      "price_range": ""
+      "price_range": "~15,000 - 60,000đ/cái (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh hũ vàng & khai trương",
       "description": "Bánh để chúc mừng khai trương.",
       "category": "Bánh hũ vàng & khai trương",
-      "price_range": ""
+      "price_range": "~500,000 - 1,500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh nặn tạo hình",
       "description": "Bánh được tạo hình theo yêu cầu.",
       "category": "Bánh nặn tạo hình",
-      "price_range": ""
+      "price_range": "~400,000 - 900,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh mẫu tim",
       "description": "Bánh hình mẫu tim.",
       "category": "Bánh mẫu tim",
-      "price_range": ""
+      "price_range": "~280,000 - 500,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh 18+",
       "description": "Bánh cho độ tuổi 18.",
       "category": "Bánh 18+",
-      "price_range": ""
+      "price_range": "~380,000 - 700,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh chủ đề theo yêu cầu",
       "description": "Bánh theo chủ đề yêu cầu của khách hàng.",
       "category": "Bánh chủ đề theo yêu cầu",
-      "price_range": ""
+      "price_range": "~400,000 - 900,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh chữ & số",
       "description": "Bánh với chữ và số.",
       "category": "Bánh chữ & số",
-      "price_range": ""
+      "price_range": "~350,000 - 600,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh cưới",
       "description": "Bánh cưới cho ngày trọng đại.",
       "category": "Bánh cưới",
-      "price_range": ""
+      "price_range": "~1,500,000 - 5,000,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh hoa",
       "description": "Bánh trang trí hoa.",
       "category": "Bánh hoa",
-      "price_range": ""
+      "price_range": "~300,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh trái cây",
       "description": "Bánh với trái cây tươi.",
       "category": "Bánh trái cây",
-      "price_range": ""
+      "price_range": "~320,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh búp bê",
       "description": "Bánh hình búp bê.",
       "category": "Bánh búp bê",
-      "price_range": ""
+      "price_range": "~400,000 - 750,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh máy bay, ô tô, siêu nhân",
       "description": "Bánh với hình máy bay, ô tô, siêu nhân.",
       "category": "Bánh máy bay, ô tô, siêu nhân",
-      "price_range": ""
+      "price_range": "~400,000 - 800,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh kem con vật",
       "description": "Bánh kem hình con vật.",
       "category": "Bánh kem con vật",
-      "price_range": ""
+      "price_range": "~350,000 - 700,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh logo & công ty",
       "description": "Bánh với logo công ty.",
       "category": "Bánh logo & công ty",
-      "price_range": ""
+      "price_range": "~400,000 - 900,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh vẽ",
       "description": "Bánh có vẽ trang trí.",
       "category": "Bánh vẽ",
-      "price_range": ""
+      "price_range": "~350,000 - 700,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh bé gái",
       "description": "Bánh dành cho bé gái.",
       "category": "Bánh bé gái",
-      "price_range": ""
+      "price_range": "~300,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh bé trai",
       "description": "Bánh dành cho bé trai.",
       "category": "Bánh bé trai",
-      "price_range": ""
+      "price_range": "~300,000 - 650,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Mousse dừa",
       "description": "",
       "category": "Mousse/Cheese Cake",
-      "price_range": ""
+      "price_range": "~150,000 - 350,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Mix Vị",
       "description": "",
       "category": "Mousse/Cheese Cake",
-      "price_range": ""
+      "price_range": "~150,000 - 350,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Red velvet",
       "description": "",
       "category": "Mousse/Cheese Cake",
-      "price_range": ""
+      "price_range": "~200,000 - 420,000đ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Panna cotta",
       "description": "",
       "category": "",
-      "price_range": ""
+      "price_range": "~40,000 - 80,000đ/hũ (tham khảo, liên hệ báo giá chính xác)"
     },
     {
       "name": "Bánh mì chà bông sốt bơ",
@@ -417,7 +419,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Giá bánh kem tại Vani bao nhiêu",
-      "answer": "💰 **GIÁ BÁNH VANI**\n\nGiá phụ thuộc size, thiết kế và loại bánh.\n📱 Nhắn để nhận báo giá: 0935226206\n💡 Vani có nhiều mức giá phù hợp mọi ngân sách!",
+      "answer": "💰 **BẢNG GIÁ BÁNH KEM VANI** *(tham khảo)*\n\n| Size | Dùng cho | Giá ước tính |\n|------|----------|--------------|\n| 14cm | 2–4 người | ~200,000 – 280,000đ |\n| 16cm | 4–6 người | ~250,000 – 350,000đ |\n| 18cm | 6–10 người | ~300,000 – 420,000đ |\n| **20cm** | **10–12 người** | **~350,000 – 500,000đ** |\n| 22cm | 12–15 người | ~420,000 – 600,000đ |\n| 24cm | 15–20 người | ~500,000 – 700,000đ |\n| 26cm+ | 20+ người | ~650,000 – 1,000,000đ |\n\n⚠️ Giá trên là **ước tính tham khảo**. Giá thực tế phụ thuộc thiết kế, nguyên liệu và thời điểm.\n\n📱 **Nhắn Zalo để báo giá chính xác: [0935226206](https://zalo.me/0935226206)**\nGửi kèm: size cần, dịp (sinh nhật/cưới/...), ý tưởng trang trí — Vani sẽ báo giá ngay!",
       "keywords": [
         "giá",
         "bao nhiêu",
@@ -426,12 +428,25 @@ export const knowledgeBase = {
         "phí",
         "chi phí",
         "bảng giá",
-        "giá bánh"
+        "giá bánh",
+        "giá kem"
+      ]
+    },
+    {
+      "question": "Giá bánh kem size 20cm bao nhiêu",
+      "answer": "🎂 **BÁNH KEM SIZE 20CM**\n\n- Phục vụ: **10–12 người**\n- Giá ước tính: **~350,000 – 500,000đ** *(tham khảo thị trường Đà Nẵng)*\n- Bánh thiết kế phức tạp / tạo hình 3D có thể cao hơn\n\n⚠️ Đây là giá **ước tính tham khảo** — chưa có báo giá chính thức từ Vani.\n\n📱 **Nhắn Zalo để được báo giá chính xác: [0935226206](https://zalo.me/0935226206)**\nNhắn thêm: thiết kế bạn muốn, dịp gì, ngày cần — Vani tư vấn và báo giá nhanh nhất!",
+      "keywords": [
+        "size 20",
+        "20cm",
+        "giá 20",
+        "bánh 20cm",
+        "size hai mươi",
+        "20 cm"
       ]
     },
     {
       "question": "Bánh mousse có không",
-      "answer": "🧁 **MOUSSE & CHEESE CAKE VANI**\n\n- **mousse dừa size 18x36**\n- **Mousse dừa**\n- **Mix Vị**\n- **Red velvet**\n- **Bánh mousse dừa hộp**\n\nMousse mát lạnh, nhẹ, phù hợp mọi dịp!\n📱 0935 226 206",
+      "answer": "🧁 **MOUSSE & CHEESE CAKE VANI**\n\n- **mousse dừa size 18x36** — ~200,000 – 350,000đ\n- **Mousse dừa** — ~150,000 – 350,000đ\n- **Mix Vị** — ~150,000 – 350,000đ\n- **Red velvet** — ~200,000 – 420,000đ\n- **Bánh mousse dừa hộp** — 50,000₫\n\n*(Giá ước tính tham khảo, liên hệ báo giá chính xác)*\nMousse mát lạnh, nhẹ, phù hợp mọi dịp!\n📱 0935 226 206",
       "keywords": [
         "mousse",
         "cheese cake",
@@ -546,7 +561,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh cưới tại Vani",
-      "answer": "💒 **BÁNH CƯỚI VANI**\n\nVani làm bánh cưới theo concept của bạn:\n- Nhiều tầng sang trọng\n- Hoa, ribbon theo ý\n- Màu sắc đồng bộ tông cưới\n\n📅 Đặt trước **1-2 tuần**\n📱 0935 226 206",
+      "answer": "💒 **BÁNH CƯỚI VANI**\n\nVani làm bánh cưới theo concept của bạn:\n- Nhiều tầng sang trọng\n- Hoa, ribbon theo ý\n- Màu sắc đồng bộ tông cưới\n\nGiá ước tính: ~1,500,000 – 5,000,000đ *(tham khảo)*\n\n📅 Đặt trước **1-2 tuần**\n📱 0935 226 206",
       "keywords": [
         "cưới",
         "wedding",
@@ -557,7 +572,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh cho sự kiện công ty",
-      "answer": "🏢 **BÁNH SỰ KIỆN / CÔNG TY**\n\nVani nhận đơn bánh cho:\n- Tiệc sinh nhật công ty\n- Khai trương, kỷ niệm\n- Tiệc cuối năm, team building\n\n📱 Báo giá: 0935 226 206",
+      "answer": "🏢 **BÁNH SỰ KIỆN / CÔNG TY**\n\nVani nhận đơn bánh cho:\n- Tiệc sinh nhật công ty\n- Khai trương, kỷ niệm\n- Tiệc cuối năm, team building\n\nGiá ước tính: ~400,000 – 900,000đ *(tham khảo)*\n\n📱 Báo giá: 0935 226 206",
       "keywords": [
         "sự kiện",
         "công ty",
@@ -638,7 +653,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Cupcake tại Vani",
-      "answer": "🧁 **CUPCAKE VANI**\n\nCupcake nhỏ xinh, đủ màu sắc, làm quà!\n\n📱 Hỏi giá & đặt số lượng: 0935 226 206\n💡 Đặt từ 6 cái trở lên thường có ưu đãi!",
+      "answer": "🧁 **CUPCAKE VANI**\n\nCupcake nhỏ xinh, đủ màu sắc, làm quà!\nGiá ước tính: ~25,000 – 45,000đ/cái *(tham khảo)*\n\n📱 Hỏi giá & đặt số lượng: 0935 226 206\n💡 Đặt từ 6 cái trở lên thường có ưu đãi!",
       "keywords": [
         "cupcake",
         "cup cake",
@@ -648,7 +663,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh mừng thọ tại Vani",
-      "answer": "🙏 **BÁNH MỪNG THỌ VANI**\n\nVani làm bánh mừng thọ đẹp, ý nghĩa:\n- Thiết kế truyền thống hoặc hiện đại\n- Chữ thọ, hoa sen theo yêu cầu\n\n📱 0935 226 206",
+      "answer": "🙏 **BÁNH MỪNG THỌ VANI**\n\nVani làm bánh mừng thọ đẹp, ý nghĩa:\n- Thiết kế truyền thống hoặc hiện đại\n- Chữ thọ, hoa sen theo yêu cầu\n\nGiá ước tính: ~380,000 – 800,000đ *(tham khảo)*\n\n📱 0935 226 206",
       "keywords": [
         "mừng thọ",
         "thọ",
@@ -658,7 +673,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh thiết kế theo yêu cầu",
-      "answer": "✨ **BÁNH THIẾT KẾ THEO YÊU CẦU**\n\nVani làm bánh custom theo concept riêng:\n- Màu sắc tùy chọn\n- Hình vẽ, nhân vật yêu thích\n- Chữ viết theo ý\n\n📅 Đặt trước **3-5 ngày** (custom)\n📱 Gửi ảnh mẫu: 0935 226 206",
+      "answer": "✨ **BÁNH THIẾT KẾ THEO YÊU CẦU**\n\nVani làm bánh custom theo concept riêng:\n- Màu sắc tùy chọn\n- Hình vẽ, nhân vật yêu thích\n- Chữ viết theo ý\n\nGiá ước tính: ~400,000 – 900,000đ *(tham khảo)*\n\n📅 Đặt trước **3-5 ngày** (custom)\n📱 Gửi ảnh mẫu: 0935 226 206",
       "keywords": [
         "thiết kế",
         "custom",
@@ -669,7 +684,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Cheese cake Vani ngon không",
-      "answer": "🍰 **CHEESE CAKE VANI**\n\nCó! Cheese cake Vani làm từ cream cheese chất lượng:\n- **New York style** — đậm đà, dense\n- **Nhật style** — mềm mịn, nhẹ hơn\n- **No-bake** — mát lạnh, frothy\n\n📱 0935 226 206",
+      "answer": "🍰 **CHEESE CAKE VANI**\n\nCó! Cheese cake Vani làm từ cream cheese chất lượng:\n- **New York style** — đậm đà, dense\n- **Nhật style** — mềm mịn, nhẹ hơn\n- **No-bake** — mát lạnh, frothy\n\nGiá ước tính: ~200,000 – 420,000đ *(tham khảo)*\n\n📱 0935 226 206",
       "keywords": [
         "cheese cake",
         "cheesecake",
@@ -679,7 +694,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh ngọt mỗi ngày có gì",
-      "answer": "🍰 **BÁNH NGỌT HẰNG NGÀY VANI**\n\nVani có bánh ngọt hàng ngày:\n- Bánh cupcake\n- Bánh tart\n- Bánh bông lan\n- Cookie, brownie\n\n📍 107 Đ. Lê Đình Dương, Nam Dương, Q. Hải Châu, Đà Nẵng\n📱 0935 226 206",
+      "answer": "🍰 **BÁNH NGỌT HẰNG NGÀY VANI**\n\nVani có bánh ngọt hàng ngày:\n- Bánh cupcake\n- Bánh tart\n- Bánh bông lan\n- Cookie, brownie\n\nGiá từ: ~15,000 – 60,000đ/cái *(tham khảo)*\n\n📍 107 Đ. Lê Đình Dương, Nam Dương, Q. Hải Châu, Đà Nẵng\n📱 0935 226 206",
       "keywords": [
         "bánh ngọt",
         "hàng ngày",

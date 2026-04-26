@@ -21,6 +21,7 @@
     "dotenv": "^17.4.2",
     "express": "^4.21.0",
     "express-rate-limit": "^8.4.1",
+    "gh": "^2.8.9",
     "openai": "^6.34.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
