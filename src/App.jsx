@@ -149,7 +149,11 @@ const App = () => {
         Hỏi về bánh kem, đặt hàng ngay!
       </div>
       <div className={`container ${showChatbot ? 'show' : ''}`}>
-        <button onClick={() => setShowChatbot(!showChatbot)} id="chatbot-toggler">
+        <button
+          onClick={() => setShowChatbot(!showChatbot)}
+          id="chatbot-toggler"
+          aria-label={showChatbot ? 'Đóng chatbot' : 'Mở chatbot'}
+        >
           <span className="material-symbols-rounded">
             {showChatbot ? 'close' : 'mode_comment'}
           </span>
@@ -165,6 +169,7 @@ const App = () => {
             <button
               onClick={() => setShowChatbot(false)}
               className="material-symbols-rounded"
+              aria-label="Đóng chatbot"
             >
               close
             </button>

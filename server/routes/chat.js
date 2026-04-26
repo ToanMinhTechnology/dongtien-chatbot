@@ -35,15 +35,22 @@ chatRouter.post('/chat', async (req, res) => {
       return res.status(400).json({ success: false, error: 'history is required' });
     }
 
+    const MAX_HISTORY = 10;
+    const MAX_TEXT_LEN = 500;
+
     const messages = [
       { role: 'system', content: SYSTEM_PROMPT },
-      // Only forward user/model turns — strip any injected system-role entries
+      // Cap history, strip system-role injections, enforce per-message text limit
       ...history
+        .slice(-MAX_HISTORY)
         .filter(({ role }) => role === 'user' || role === 'model')
-        .map(({ role, text }) => ({
-          role: role === 'model' ? 'assistant' : 'user',
-          content: typeof text === 'string' ? text : String(text ?? ''),
-        })),
+        .map(({ role, text }) => {
+          const raw = typeof text === 'string' ? text : String(text ?? '');
+          return {
+            role: role === 'model' ? 'assistant' : 'user',
+            content: raw.slice(0, MAX_TEXT_LEN),
+          };
+        }),
     ];
 
     const completion = await openai.chat.completions.create({

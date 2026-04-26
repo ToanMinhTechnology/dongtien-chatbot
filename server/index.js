@@ -15,10 +15,12 @@ const PORT = process.env.PORT || 3001;
 const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN;
 const corsOrigin = ALLOWED_ORIGIN
   ? ALLOWED_ORIGIN
-  : (origin, cb) => {
-      if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) cb(null, true);
-      else cb(new Error('Not allowed by CORS'));
-    };
+  : process.env.NODE_ENV === 'production'
+    ? ((_origin, cb) => cb(new Error('ALLOWED_ORIGIN must be set in production')))
+    : ((origin, cb) => {
+        if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) cb(null, true);
+        else cb(new Error('Not allowed by CORS'));
+      });
 
 app.use(cors({ origin: corsOrigin }));
 app.use(express.json({ limit: '10kb' }));

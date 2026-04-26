@@ -97,10 +97,14 @@ orderRouter.get('/order/:id', (req, res) => {
   });
 });
 
-// POST /api/webhook/test - Test webhook (dev only)
+// POST /api/webhook/test - Test webhook (dev only, requires TEST_WEBHOOK_SECRET header)
 orderRouter.post('/webhook/test', (req, res) => {
   if (process.env.NODE_ENV !== 'development') {
     return res.status(404).json({ success: false });
+  }
+  const secret = process.env.TEST_WEBHOOK_SECRET;
+  if (secret && req.headers['x-test-secret'] !== secret) {
+    return res.status(403).json({ success: false, error: 'Forbidden' });
   }
   console.log('🧪 Webhook test received:', JSON.stringify(req.body));
   res.json({ success: true, message: 'Webhook test OK' });
