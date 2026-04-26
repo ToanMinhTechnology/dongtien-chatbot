@@ -36,7 +36,12 @@
       "Bash(node --input-type=module --eval \"import\\('./server/routes/chat.js'\\)\")",
       "Bash(node --input-type=module --eval \"import\\('./server/routes/order.js'\\)\")",
       "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('package.json','utf8'\\)\\)\")",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(npx vitest *)",
+      "Bash(git push *)",
+      "Bash(gh pr create --title 'feat: chatbot improvements — OpenAI integration, security hardening, a11y, tests' --body ' *)",
+      "Bash(where gh *)",
+      "Bash(winget list *)"
     ]
   }
 }
