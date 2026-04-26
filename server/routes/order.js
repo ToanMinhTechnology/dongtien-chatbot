@@ -10,7 +10,7 @@ export const orderRouter = Router();
 const PHONE_RE = /^[0-9]{10,11}$/;
 
 // Mask middle digits of phone for logs: 0935226206 → 0935****06
-const maskPhone = (phone) => phone.slice(0, 4) + '****' + phone.slice(-2);
+const maskPhone = (phone) => phone ? phone.slice(0, 4) + '****' + phone.slice(-2) : '****';
 
 // POST /api/order - Create new order via webhook
 orderRouter.post('/order', async (req, res) => {

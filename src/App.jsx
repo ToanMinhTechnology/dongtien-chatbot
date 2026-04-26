@@ -8,6 +8,8 @@ import axios from "axios";
 import { matchIntent, isOrderIntent } from "./utils/intentMatcher.js";
 import { trackEvent } from "./utils/analytics.js";
 
+const API_URL = API_URL;
+
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [showChatbot, setShowChatbot] = useState(false);
@@ -54,7 +56,7 @@ const App = () => {
     // Step 3: Fall back to OpenAI via server (API key stays server-side)
     trackEvent('OPENAI_FALLBACK', { query: lastUserMessage });
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const apiUrl = API_URL;
       const response = await axios.post(`${apiUrl}/api/chat`, { history });
       const botText = response.data.reply || "Xin lỗi, mình chưa hiểu câu hỏi. Bạn chat Zalo **0935 226 206** để được hỗ trợ nha!";
       updateHistory(botText);
@@ -69,7 +71,7 @@ const App = () => {
   const handleOrderConfirm = async (orderDetails) => {
     try {
       // Send to webhook
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const apiUrl = API_URL;
       const response = await axios.post(`${apiUrl}/api/order`, orderDetails);
 
       if (response.data.success) {

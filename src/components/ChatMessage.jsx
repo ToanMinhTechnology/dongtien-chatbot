@@ -1,7 +1,11 @@
-import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ChatbotIcon from "./ChatbotIcon.jsx"
+
+const MD_COMPONENTS = {
+  ul: ({ node, ...props }) => <ul className="my-list" {...props} />,
+  strong: ({ node, ...props }) => <strong className="font-bold" {...props} />,
+}
 
 const ChatMessage = ({ chat }) => {
   return (
@@ -10,10 +14,7 @@ const ChatMessage = ({ chat }) => {
       <div className="message-text">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          components={{
-            ul: ({ node, ...props }) => <ul className="my-list" {...props} />,
-            strong: ({ node, ...props }) => <strong className="font-bold" {...props} />,
-          }}
+          components={MD_COMPONENTS}
         >
           {chat.text || ''}
         </ReactMarkdown>
