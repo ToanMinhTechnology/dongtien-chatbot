@@ -15,6 +15,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.4.2",
     "@mendable/firecrawl-js": "^4.19.0",
     "axios": "^1.11.0",
     "cors": "^2.8.5",

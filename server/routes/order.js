@@ -1,9 +1,9 @@
-// Order routes - Webhook-first implementation
-// No database in Phase 1 - just webhook notifications
+// Order routes - Sprint 2: business logic via orderEngine
 // TODO Phase 2: replace console.log with Zalo webhook / email — logs below contain PII
 
 import { Router } from 'express';
 import { randomUUID } from 'crypto';
+import { evaluateOrder, SHIPPING_RESULT } from '../services/orderEngine.js';
 
 export const orderRouter = Router();
 
@@ -44,6 +44,21 @@ orderRouter.post('/order', async (req, res) => {
       });
     }
 
+    // Sprint 2: evaluate order (classification + delivery window + shipping)
+    const estimate = await evaluateOrder({
+      product: trimmedProduct,
+      quantity,
+      deliveryAddress: deliveryAddress || null,
+    });
+
+    // Reject if shipping calculation confirms undeliverable
+    if (!estimate.canFulfill) {
+      return res.status(400).json({
+        success: false,
+        error: estimate.shipping?.message ?? 'Không thể giao đến địa chỉ này. Vui lòng liên hệ Zalo 0935 226 206.',
+      });
+    }
+
     // Build order object
     const order = {
       id: `ORD-${randomUUID().split('-')[0].toUpperCase()}`,
@@ -55,7 +70,8 @@ orderRouter.post('/order', async (req, res) => {
       deliveryAddress: deliveryAddress || null,
       notes: notes || null,
       status: 'PENDING',
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      cakeType: estimate.cakeType,
     };
 
     // WEBHOOK NOTIFICATION (Phase 1: console.log only — phone is partially masked)
@@ -66,8 +82,11 @@ orderRouter.post('/order', async (req, res) => {
     console.log(`🆔 Order ID: ${order.id}`);
     console.log(`👤 Customer: [REDACTED]`);
     console.log(`📱 Phone: ${maskPhone(order.phone)}`);
-    console.log(`🍰 Product: ${order.quantity}x ${order.product}`);
-    if (order.deliveryDate) console.log(`📅 Delivery: ${order.deliveryDate}`);
+    console.log(`🍰 Product: ${order.quantity}x ${order.product} (${order.cakeType})`);
+    console.log(`🚚 Delivery: ${estimate.deliveryWindow.message}`);
+    if (estimate.requiresManualShipping) console.log('💰 Phí ship: staff xác nhận');
+    else if (estimate.shipping) console.log(`💰 Phí ship: ${estimate.shipping.message}`);
+    if (order.deliveryDate) console.log(`📅 Requested: ${order.deliveryDate}`);
     if (order.deliveryAddress) console.log(`📍 Address: [REDACTED]`);
     if (order.notes) console.log(`📝 Notes: [REDACTED]`);
     console.log(`⏰ Time: ${order.createdAt}`);
@@ -76,7 +95,15 @@ orderRouter.post('/order', async (req, res) => {
     res.status(201).json({
       success: true,
       message: 'Đơn hàng đã được gửi! Vani sẽ liên hệ xác nhận sớm nhất.',
-      orderId: order.id
+      orderId: order.id,
+      estimate: {
+        cakeType: estimate.cakeType,
+        cakeFound: estimate.cakeFound,
+        deliveryWindow: estimate.deliveryWindow,
+        shipping: estimate.requiresManualShipping
+          ? { message: 'Phí ship sẽ được xác nhận khi Vani liên hệ', requiresManualShipping: true }
+          : estimate.shipping,
+      },
     });
 
   } catch (error) {
