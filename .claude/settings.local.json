@@ -45,7 +45,14 @@
       "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)",
       "Skill(investigate)",
       "Skill(investigate:*)",
-      "Bash(npm test *)"
+      "Bash(npm test *)",
+      "Bash(node scripts/build-kb.cjs)",
+      "Skill(ship)",
+      "Skill(ship:*)",
+      "Bash(git remote *)",
+      "Bash(bun test *)",
+      "Bash(git stash *)",
+      "Bash(git commit *)"
     ]
   }
 }
