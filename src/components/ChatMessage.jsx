@@ -5,6 +5,18 @@ import ChatbotIcon from "./ChatbotIcon.jsx"
 const MD_COMPONENTS = {
   ul: ({ node, ...props }) => <ul className="my-list" {...props} />,
   strong: ({ node, ...props }) => <strong className="font-bold" {...props} />,
+  img: ({ node, src, alt }) => {
+    if (!src || !src.startsWith('https://product.hstatic.net/')) return null;
+    return (
+      <img
+        src={src}
+        alt={alt || 'Ảnh bánh'}
+        style={{ maxWidth: '100%', borderRadius: '10px', marginBottom: '8px', display: 'block' }}
+        loading="lazy"
+        onError={(e) => { e.currentTarget.style.display = 'none'; }}
+      />
+    );
+  },
 }
 
 const ChatMessage = ({ chat }) => {
