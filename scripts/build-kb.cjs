@@ -1,7 +1,77 @@
 'use strict';
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('./data/structured/vani-products.json', 'utf8'));
+let data, rawCrawl;
+try { data = JSON.parse(fs.readFileSync('./data/structured/vani-products.json', 'utf8')); }
+catch (e) { throw new Error('Failed to read vani-products.json: ' + e.message); }
+try { rawCrawl = JSON.parse(fs.readFileSync('./data/raw/vani-crawl.json', 'utf8')); }
+catch (e) { throw new Error('Failed to read vani-crawl.json: ' + e.message); }
 
+// ── Extract images & descriptions from raw crawl ──────────────────────────────
+const crawlPages = rawCrawl.data || [];
+
+function normalizeSlug(str) {
+  return str
+    .toLowerCase()
+    .replace(/đ/g, 'd')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9\s]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
+// Map: url-slug → { imageUrl, description }
+const crawlMap = {};
+for (const page of crawlPages) {
+  const url = (page.metadata && page.metadata.url) || '';
+  const m = url.match(/\/products\/([^/?#]+)/);
+  if (!m) continue;
+  const slug = m[1];
+  const md = page.markdown || '';
+
+  // Only accept images from the official CDN to prevent SSRF via compromised crawl data
+  const imgMatch = md.match(/(https:\/\/product\.hstatic\.net\/[^\s)\]]+_compact\.(?:jpg|jpeg|png|webp))/);
+  const imageUrl = imgMatch ? imgMatch[1] : '';
+
+  // Extract description: lines after the first image block, skip nav/bullets/links
+  const lines = md.split('\n');
+  const descLines = [];
+  let pastImages = false;
+  for (const line of lines) {
+    const t = line.trim();
+    if (t.startsWith('![')) { pastImages = true; continue; }
+    if (!pastImages) continue;
+    if (!t || t.startsWith('!') || t.startsWith('-') || t.startsWith('#') ||
+        /^\d+\./.test(t) || /^https?:\/\//.test(t) || t.length < 10) continue;
+    descLines.push(t);
+    if (descLines.length >= 2) break;
+  }
+
+  const rawDesc = descLines.join(' ');
+  // Filter Shopify/Haravan boilerplate ("Default Title - 0₫ [Liên hệ]...")
+  const isBoilerplate = /Default Title|0₫|\[Liên hệ\]/.test(rawDesc);
+  crawlMap[slug] = { imageUrl, description: isBoilerplate ? '' : rawDesc.slice(0, 200) };
+}
+
+if (Object.keys(crawlMap).length === 0) {
+  console.warn('WARNING: crawlMap is empty — check data/raw/vani-crawl.json structure');
+}
+
+// Find best matching crawl page for a product name (fuzzy word-overlap)
+function findCrawlData(productName) {
+  const slug = normalizeSlug(productName);
+  if (crawlMap[slug]) return crawlMap[slug];
+
+  const words = slug.split('-').filter((w) => w.length >= 3);
+  let bestKey = null;
+  let bestScore = 0;
+  for (const key of Object.keys(crawlMap)) {
+    const hits = words.filter((w) => key.includes(w)).length;
+    if (hits > bestScore) { bestScore = hits; bestKey = key; }
+  }
+  return bestScore > 0 ? crawlMap[bestKey] : { imageUrl: '', description: '' };
+}
+
+// ── Build knowledge base ──────────────────────────────────────────────────────
 const contact = {
   phone: '0935 226 206',
   zalo: '0935226206',
@@ -11,12 +81,16 @@ const contact = {
 
 const clean = (v) => (!v || v === 'null' || v === '0₫' || v === '0') ? '' : v;
 
-const products = data.products.map((p) => ({
-  name: p.name,
-  description: clean(p.description),
-  category: clean(p.category),
-  price_range: clean(p.price_range),
-}));
+const products = data.products.map((p) => {
+  const crawl = findCrawlData(p.name);
+  return {
+    name: p.name,
+    description: clean(p.description) || crawl.description,
+    category: clean(p.category),
+    price_range: clean(p.price_range),
+    image_url: crawl.imageUrl,
+  };
+});
 
 const categories = data.categories.filter((c) => c && c !== 'null');
 
@@ -189,9 +263,15 @@ const faqs = [
 
 const kb = { products, faqs, contact, categories, policies };
 const nullCheck = faqs.filter((f) => f.answer.includes('null')).length;
+const withImage = products.filter((p) => p.image_url).length;
+const withDesc = products.filter((p) => p.description).length;
+const crawledAt = new Date().toISOString();
 const out = `// Tiệm Bánh Vani - Knowledge Base
-// Generated from tiembanhvani.com crawl data (data/structured/vani-products.json)
-// Re-run: npm run crawl:vani to refresh
+// Generated: ${crawledAt}
+// Source: tiembanhvani.com crawl data (data/structured/vani-products.json + data/raw/vani-crawl.json)
+// Re-run: npm run crawl:vani && node scripts/build-kb.cjs to refresh when catalog changes
+// price_range: giá thực từ Firecrawl nếu có, còn lại là tham khảo thị trường Đà Nẵng 2024
+// Liên hệ 0935 226 206 để báo giá chính xác theo yêu cầu cụ thể
 
 export const knowledgeBase = ${JSON.stringify(kb, null, 2)};
 
@@ -199,4 +279,4 @@ export default knowledgeBase;
 `;
 
 fs.writeFileSync('./src/data/knowledgeBase.js', out);
-console.log(`Products: ${products.length} | FAQs: ${faqs.length} | Categories: ${categories.length} | null-answers: ${nullCheck}`);
+console.log(`Products: ${products.length} | with image: ${withImage} | with desc: ${withDesc} | FAQs: ${faqs.length} | Categories: ${categories.length} | null-answers: ${nullCheck}`);
