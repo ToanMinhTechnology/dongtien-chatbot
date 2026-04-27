@@ -3,7 +3,7 @@
 
 import { Router } from 'express';
 import { randomUUID } from 'crypto';
-import { evaluateOrder, SHIPPING_RESULT } from '../services/orderEngine.js';
+import { evaluateOrder } from '../services/orderEngine.js';
 
 export const orderRouter = Router();
 
