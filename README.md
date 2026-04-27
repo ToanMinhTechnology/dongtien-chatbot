@@ -1,147 +1,173 @@
-# 🤖 AI ChatBot - React + Vite
+# Đồng Tiến Bakery — AI CSKH Chatbot
 
-A modern AI-powered chatbot built with React and Vite, integrated with Google's Gemini AI API. Get instant intelligent responses to any question with a beautiful, responsive interface.
+Chatbot chăm sóc khách hàng tự động cho Tiệm Bánh Vani (DOTICOM), xây dựng với React + Vite + OpenAI. Khách hàng có thể hỏi về sản phẩm, giá, thời gian giao hàng, và đặt bánh trực tiếp qua chat.
 
-![ChatBot Demo](https://img.shields.io/badge/Status-Live-green) ![React](https://img.shields.io/badge/React-18+-blue) ![Vite](https://img.shields.io/badge/Vite-5+-yellow)
+![Status](https://img.shields.io/badge/Status-Live-green) ![React](https://img.shields.io/badge/React-18+-blue) ![Vite](https://img.shields.io/badge/Vite-5+-yellow) ![Version](https://img.shields.io/badge/Version-0.1.0-orange)
 
-## ✨ Features
+## Tính năng
 
-- 🧠 **AI-Powered** - Integrated with Google Gemini 2.0 Flash API
-- 💬 **Conversational Interface** - Natural chat experience
-- 🎨 **Modern UI/UX** - Beautiful gradient design with smooth animations
-- 📱 **Responsive Design** - Works perfectly on all devices
-- 🟣 **Floating Widget** - Non-intrusive corner chatbot
-- 📝 **Text Formatting** - Supports markdown-like formatting (bold, bullets, lists)
-- ⚡ **Fast Performance** - Built with Vite for lightning-fast development
-- 🔒 **Secure** - Environment variables for API key protection
+- **FAQ thông minh** — Trả lời câu hỏi về sản phẩm, giá, thời gian đặt trước, khu vực giao hàng
+- **Đặt bánh qua chat** — Form đặt hàng tích hợp trong giao diện chat
+- **Phân loại bánh** — Tự động nhận biết bánh bán tại cửa hàng (`in-store`) hay bánh xưởng (`factory`)
+- **Ca giao hàng thông minh** — Tính Ca 1 (08:00–11:30) / Ca 2 (12:30–17:00) theo giờ VN thực tế
+- **Ma trận phí ship** — 6 mức phí dựa trên khoảng cách và giá trị đơn; freeship dưới 5km
+- **Google Maps integration** — Tính khoảng cách thực tế từ các cửa hàng DOTICOM đến địa chỉ giao
+- **Hình ảnh sản phẩm** — 22 sản phẩm DOTICOM với hình ảnh thực tế từ CDN
+- **Bảo mật** — XSS protection, prompt injection guard, phone masking trong logs
 
-## 🚀 Quick Start
+## Quick Start
 
-### Prerequisites
-- Node.js 16+ 
-- npm or yarn
-- Google Gemini API Key
+### Yêu cầu
+- Node.js 18+
+- npm
+- OpenAI API Key
+- Google Maps API Key (tùy chọn — fallback về xác nhận thủ công nếu không có)
 
-### 1. Clone the Repository
+### 1. Clone và cài dependencies
 ```bash
-git clone <your-repo-url>
-cd chatBot
-```
-
-### 2. Install Dependencies
-```bash
+git clone https://github.com/ToanMinhTechnology/dongtien-chatbot.git
+cd dongtien-chatbot
 npm install
 ```
 
-### 3. Environment Setup
-Create a `.env` file in the root directory:
+### 2. Cấu hình môi trường
+Tạo file `.env` ở root:
 ```env
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
+OPENAI_API_KEY=sk-...
+GOOGLE_MAPS_API_KEY=AIza...   # tùy chọn
+PORT=3001                      # tùy chọn, mặc định 3001
+ALLOWED_ORIGIN=http://localhost:5173   # tùy chọn cho dev
 ```
 
-**Get your API key from:** [Google AI Studio](https://makersuite.google.com/app/apikey)
+### 3. Chạy development
+Cần 2 terminal:
 
-### 4. Run Development Server
+**Terminal 1 — Frontend (React/Vite):**
 ```bash
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Mở [http://localhost:5173](http://localhost:5173)
 
-## 🛠️ Build & Deploy
+**Terminal 2 — Backend (Express):**
+```bash
+npm run server:dev
+```
+API chạy tại [http://localhost:3001](http://localhost:3001)
 
-### Build for Production
+## Build & Deploy
+
+### Build frontend
 ```bash
 npm run build
 ```
-This creates an optimized build in the `dist/` folder.
+Output vào `dist/`.
 
-### Deploy
-Upload the `dist/` folder contents to any static hosting service:
-- **Vercel**: `vercel --prod`
-- **Netlify**: Drag & drop the `dist` folder
-- **GitHub Pages**: Upload to gh-pages branch
+### Deploy lên Vercel
+Project đã cấu hình sẵn Vercel serverless functions trong `api/`:
 
-## 📁 Project Structure
+```bash
+vercel --prod
+```
+
+Đặt các biến môi trường sau trong Vercel dashboard:
+- `OPENAI_API_KEY` — bắt buộc
+- `GOOGLE_MAPS_API_KEY` — tùy chọn (không có thì phí ship xác nhận thủ công)
+- `ALLOWED_ORIGIN` — domain frontend của bạn
+
+## Cấu trúc project
 
 ```
-chatBot/
+dongtien-chatbot/
+├── api/                    # Vercel serverless functions
+│   ├── chat.js             # POST /api/chat
+│   └── order.js            # POST /api/order
+├── server/                 # Express server (local dev)
+│   ├── index.js
+│   ├── routes/
+│   │   ├── chat.js         # Chat route với RAG context injection
+│   │   └── order.js        # Order route với evaluateOrder()
+│   └── services/
+│       └── orderEngine.js  # Sprint 2: phân loại bánh, ca giao, phí ship
 ├── src/
 │   ├── components/
-│   │   ├── ChatMessage.jsx    # Message formatting component
-│   │   ├── ChatForm.jsx       # Input form component
-│   │   └── ChatbotIcon.jsx    # Bot icon component
-│   ├── App.jsx                # Main application
-│   ├── index.css              # Global styles
-│   └── main.jsx               # App entry point
-├── public/
-├── .env                       # Environment variables
-└── package.json
+│   │   ├── ChatMessage.jsx  # Render message + hình sản phẩm
+│   │   ├── ChatForm.jsx     # Input form
+│   │   └── OrderForm.jsx    # Form đặt hàng
+│   ├── data/
+│   │   ├── knowledgeBase.js # FAQ và intent scoring
+│   │   ├── cakeDatabase.js  # 22 sản phẩm DOTICOM
+│   │   └── shippingMatrix.js # Ma trận 6 mức phí ship
+│   ├── utils/
+│   │   ├── intentMatcher.js # FAQ intent detection
+│   │   └── normalize.js     # Text normalization tiếng Việt
+│   └── App.jsx              # Main app + chat logic
+├── scripts/
+│   └── build-kb.cjs         # Crawl và build knowledge base
+├── data/
+│   └── structured/          # Dữ liệu sản phẩm crawl từ website
+├── CHANGELOG.md
+└── vercel.json
 ```
 
-## ⚙️ Configuration
+## Scripts
 
-### Customizing the Bot
-- **Welcome Message**: Edit the welcome text in `App.jsx`
-- **Styling**: Modify colors and layout in `index.css`
-- **AI Responses**: Adjust API parameters in the `generateBotResponse` function
+| Lệnh | Mô tả |
+|------|-------|
+| `npm run dev` | Chạy Vite dev server (frontend) |
+| `npm run server:dev` | Chạy Express với hot reload (backend) |
+| `npm run build` | Build frontend cho production |
+| `npm run test` | Chạy toàn bộ test suite (vitest) |
+| `npm run test:watch` | Test ở watch mode |
+| `npm run lint` | ESLint |
+| `npm run crawl:vani` | Crawl dữ liệu mới từ website Vani |
 
-### API Configuration
-```javascript
-// In App.jsx - generateBotResponse function
-generationConfig: {
-  temperature: 0.7,     // Creativity (0-1)
-  topK: 40,            // Response variety
-  topP: 0.95,          // Response precision
-  maxOutputTokens: 1024 // Response length
-}
+## Kiến trúc
+
+```
+User ──→ React Chat UI
+           │
+           ├──→ FAQ/Intent Matcher (client-side, zero-latency)
+           │       └── Matched? Return answer immediately
+           │
+           └──→ POST /api/chat (OpenAI)
+                   ├── RAG: inject sản phẩm liên quan vào system prompt
+                   └── Return Claude-generated response
+
+User submit order ──→ POST /api/order
+                           ├── Validate fields
+                           ├── evaluateOrder(): classify + delivery window + shipping
+                           ├── Reject nếu ngoài vùng giao (>20km hoặc <2M VND cho 10–20km)
+                           └── Log order + return estimate
 ```
 
-## 🎯 Usage
+## Phí ship (Sprint 2)
 
-1. **Click the purple chat button** in the bottom-right corner
-2. **Type your question** in the input field
-3. **Press Enter or click send** to get AI responses
-4. **Close** by clicking the X or chat button again
+| Khoảng cách | Giá trị đơn | Phí |
+|-------------|-------------|-----|
+| ≤ 5km | bất kỳ | Miễn phí |
+| 5–7km | ≥ 250k | Miễn phí |
+| 5–7km | 100k–250k | 15,000đ |
+| 7–10km | ≥ 350k | Miễn phí |
+| 7–10km | 250k–350k | 15,000đ |
+| 7–10km | 100k–250k | 25,000đ |
+| 10–20km | ≥ 2,000,000đ | 25,000đ |
+| 10–20km | < 2,000,000đ | Từ chối |
+| > 20km | bất kỳ | Từ chối |
 
-## 🔧 Development
+## Troubleshooting
 
-### Available Scripts
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+**Chatbot không trả lời:**
+Kiểm tra `OPENAI_API_KEY` trong `.env` và xem console của terminal backend.
 
-### Key Dependencies
-- **React 18+** - UI framework
-- **Vite** - Build tool and dev server
-- **Axios** - HTTP client for API calls
-- **Google Gemini API** - AI responses
+**Phí ship hiện "xác nhận thủ công":**
+Bình thường nếu chưa có `GOOGLE_MAPS_API_KEY`. Thêm key để bật tính năng tính khoảng cách tự động.
 
-## 🤝 Contributing
+**Lỗi CORS:**
+Đảm bảo `ALLOWED_ORIGIN` khớp với URL frontend. Hoặc để trống để cho phép tất cả `localhost:*` ở dev.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🐛 Troubleshooting
-
-### Common Issues
-- **API Key Error**: Make sure your `.env` file has the correct `VITE_GEMINI_API_KEY`
-- **Build Fails**: Run `npm install` to ensure all dependencies are installed
-- **Chatbot Not Responding**: Check browser console for API errors
-
-### Support
-If you encounter issues, please open an issue on GitHub with:
-- Error message
-- Browser and version
-- Steps to reproduce
+**Build fails:**
+Chạy `npm install` để đảm bảo đủ dependencies, sau đó `npm run build`.
 
 ---
 
-**Made with ❤️ using React + Vite + Gemini AI**
+Liên hệ: Zalo 0935 226 206 | [ToanMinhTechnology/dongtien-chatbot](https://github.com/ToanMinhTechnology/dongtien-chatbot) | [CHANGELOG](CHANGELOG.md)
