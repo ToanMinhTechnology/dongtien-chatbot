@@ -508,7 +508,7 @@ export const knowledgeBase = {
     },
     {
       "question": "Bánh kem sinh nhật có những loại gì",
-      "answer": "🎂 **BÁNH KEM SINH NHẬT VANI**\n\n- **bánh kem baby three**\n- **mousse dừa size 18x36**\n- **cupcake**\n- **bánh kem cưới**\n- **bánh kem pokemon**\n- **bánh kem 2 tầng - nam**\n- **bánh kem 2 tầng - bé gái**\n- **bánh kem 2 tầng - công ty**\n- **bánh kem số**\n- **bánh kem công ty**\n\n📅 Đặt trước **1-2 ngày**\n📱 0935 226 206",
+      "answer": "🎂 **BÁNH KEM SINH NHẬT VANI**\n\n💰 **Giá tham khảo:** ~250,000 – 900,000đ tùy size & thiết kế.\n📱 Nhắn Zalo **0935 226 206** để nhận báo giá chính xác!\n\nCác mẫu phổ biến:\n- **bánh kem baby three**\n- **mousse dừa size 18x36**\n- **cupcake**\n- **bánh kem pokemon**\n- **bánh kem 2 tầng - bé gái**\n- **bánh kem 2 tầng - nam**\n- **bánh kem số**\n- **bánh kem công ty**\n\n📅 Đặt trước **1-2 ngày**",
       "keywords": [
         "bánh kem",
         "bánh sinh nhật",
@@ -550,7 +550,9 @@ export const knowledgeBase = {
         "thời gian làm",
         "lead time",
         "bao nhiêu ngày",
-        "mấy ngày"
+        "mấy ngày",
+        "cần trước",
+        "trước mấy ngày"
       ]
     },
     {

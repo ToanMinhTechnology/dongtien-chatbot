@@ -34,7 +34,12 @@ const App = () => {
       // Answer any embedded non-order question in the message first (spec step 1)
       // e.g. "muốn đặt bánh, cần trước mấy ngày?" → answer 1-2 ngày, then show form
       const embeddedMatch = matchIntent(lastUserMessage);
-      const ORDER_FAQ_QUESTIONS = ['Muốn đặt bánh ngay', 'Cách đặt bánh tại Vani'];
+      const ORDER_FAQ_QUESTIONS = [
+        'Muốn đặt bánh ngay',
+        'Cách đặt bánh tại Vani',
+        'Bánh kem sinh nhật có những loại gì',
+        'Tiệm Bánh Vani có những loại bánh nào',
+      ];
       const hasEmbeddedAnswer =
         embeddedMatch.match && !ORDER_FAQ_QUESTIONS.includes(embeddedMatch.question);
 
