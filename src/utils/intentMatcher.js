@@ -2,18 +2,9 @@
 // Uses knowledgeBase.faqs: [{question, answer, keywords}]
 
 import { knowledgeBase } from '../data/knowledgeBase.js';
+import { normalizeText } from './normalize.js';
 
 const faqs = knowledgeBase.faqs ?? [];
-
-const normalizeText = (text) =>
-  text
-    .toLowerCase()
-    .replace(/đ/g, 'd')   // đ (U+0111) doesn't decompose via NFD — must replace before stripping
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .replace(/[^\w\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
 
 // Best-match base (0.6) + density bonus (0.4) — avoids penalising FAQs with many keywords
 const calculateMatchScore = (query, keywords) => {
