@@ -1,43 +1,19 @@
 import OpenAI from 'openai';
-import { knowledgeBase } from '../src/data/knowledgeBase.js';
-import { normalizeText } from '../src/utils/normalize.js';
+import { searchSimilar, productToContextLine } from '../server/services/embeddingService.js';
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const MAX_CONTEXT_PRODUCTS = 8;
 const MAX_HISTORY = 10;
 const MAX_TEXT_LEN = 500;
 
-const safe = (s) => (s || '').replace(/[\r\n]+/g, ' ').trim();
-
-function buildContext(userMessage) {
-  const q = normalizeText(userMessage);
-  const allWords = q.split(' ');
-  const unigrams = allWords.filter((w) => w.length >= 3);
-  if (unigrams.length === 0) return '';
-  const bigrams = allWords.length >= 2
-    ? allWords.slice(0, -1).map((w, i) => `${w} ${allWords[i + 1]}`)
-    : [];
-  const tokens = [...unigrams, ...bigrams];
-
-  const scored = (knowledgeBase.products ?? [])
-    .map((p) => {
-      const haystack = normalizeText(`${p.name} ${p.category}`);
-      const hits = tokens.filter((t) => haystack.includes(t)).length;
-      return { p, hits };
-    })
-    .filter(({ hits }) => hits > 0)
-    .sort((a, b) => b.hits - a.hits)
-    .slice(0, MAX_CONTEXT_PRODUCTS)
-    .map(({ p }) => {
-      let line = `- ${safe(p.name)} (${safe(p.category)}): ${safe(p.price_range)}`;
-      if (p.description) line += ` | mô tả: ${safe(p.description)}`;
-      if (p.image_url) line += ` | ảnh: ${safe(p.image_url)}`;
-      return line;
-    });
-
-  if (scored.length === 0) return '';
-  return `\nSẢN PHẨM LIÊN QUAN ĐẾN CÂU HỎI:\n${scored.join('\n')}`;
+async function buildContext(userMessage) {
+  try {
+    const products = await searchSimilar(userMessage);
+    if (products.length === 0) return '';
+    return `\nSẢN PHẨM LIÊN QUAN ĐẾN CÂU HỎI:\n${products.map(productToContextLine).join('\n')}`;
+  } catch {
+    return '';
+  }
 }
 
 const SYSTEM_PROMPT = `Bạn là trợ lý tư vấn của Tiệm Bánh Vani (tiembanhvani.com) - tiệm bánh handmade tại Đà Nẵng.
@@ -53,7 +29,7 @@ Bánh kem sinh nhật (baby, số, pokemon, công ty, 2 tầng, cưới), Mousse
 
 QUY TẮC TRẢ LỜI:
 - Trả lời bằng tiếng Việt, thân thiện, ngắn gọn, dùng emoji phù hợp
-- Khi khách hỏi giá: dùng price_range trong SẢN PHẨM LIÊN QUAN (nếu có), luôn nhắc đây là giá tham khảo và mời nhắn Zalo 0935 226 206 để báo giá chính xác
+- Khi khách hỏi giá: dùng giá trong SẢN PHẨM LIÊN QUAN (nếu có), luôn nhắc đây là giá tham khảo và mời nhắn Zalo 0935 226 206 để báo giá chính xác
 - Khi tư vấn sản phẩm có ảnh trong SẢN PHẨM LIÊN QUAN: hiển thị ảnh đầu tiên bằng markdown ![tên bánh](url_ảnh) ngay đầu câu trả lời
 - Khi khách muốn đặt: thu thập tên, số điện thoại, loại bánh, ngày nhận, địa chỉ giao
 - Mọi câu hỏi không rõ: hướng dẫn liên hệ Zalo 0935 226 206
@@ -76,7 +52,7 @@ export default async function handler(req, res) {
     }
 
     const lastUserText = (history.filter((m) => m.role === 'user').at(-1)?.text ?? '').slice(0, MAX_TEXT_LEN);
-    const context = buildContext(lastUserText);
+    const context = await buildContext(lastUserText);
     const systemContent = context ? `${SYSTEM_PROMPT}\n${context}` : SYSTEM_PROMPT;
 
     const messages = [

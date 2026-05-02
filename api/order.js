@@ -1,4 +1,6 @@
 import { randomUUID } from 'crypto';
+import { evaluateOrder } from '../server/services/orderEngine.js';
+import { sendOrderNotification } from '../server/services/emailService.js';
 
 const PHONE_RE = /^[0-9]{10,11}$/;
 const maskPhone = (phone) => phone ? phone.slice(0, 4) + '****' + phone.slice(-2) : '****';
@@ -37,6 +39,21 @@ export default async function handler(req, res) {
       });
     }
 
+    // Sprint 2: evaluate order (classification + delivery window + shipping)
+    const estimate = await evaluateOrder({
+      product: trimmedProduct,
+      quantity,
+      deliveryAddress: deliveryAddress || null,
+    });
+
+    // Reject if shipping calculation confirms undeliverable
+    if (!estimate.canFulfill) {
+      return res.status(400).json({
+        success: false,
+        error: estimate.shipping?.message ?? 'Không thể giao đến địa chỉ này. Vui lòng liên hệ Zalo 0935 226 206.',
+      });
+    }
+
     const order = {
       id: `ORD-${randomUUID().split('-')[0].toUpperCase()}`,
       customerName: trimmedName,
@@ -47,21 +64,38 @@ export default async function handler(req, res) {
       deliveryAddress: deliveryAddress || null,
       notes: notes || null,
       status: 'PENDING',
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      cakeType: estimate.cakeType,
     };
+
+    // Fire-and-forget — email failure must not break the order response
+    sendOrderNotification(order, estimate).catch((err) =>
+      console.error('Email notification failed:', err.message)
+    );
 
     console.log('NEW ORDER via Chatbot:', JSON.stringify({
       id: order.id,
       phone: maskPhone(order.phone),
       product: `${order.quantity}x ${order.product}`,
+      cakeType: order.cakeType,
+      deliveryWindow: estimate.deliveryWindow.message,
+      requiresManualShipping: estimate.requiresManualShipping,
       deliveryDate: order.deliveryDate,
-      createdAt: order.createdAt
+      createdAt: order.createdAt,
     }));
 
     res.status(201).json({
       success: true,
       message: 'Đơn hàng đã được gửi! Vani sẽ liên hệ xác nhận sớm nhất.',
-      orderId: order.id
+      orderId: order.id,
+      estimate: {
+        cakeType: estimate.cakeType,
+        cakeFound: estimate.cakeFound,
+        deliveryWindow: estimate.deliveryWindow,
+        shipping: estimate.requiresManualShipping
+          ? { message: 'Phí ship sẽ được xác nhận khi Vani liên hệ', requiresManualShipping: true }
+          : estimate.shipping,
+      },
     });
 
   } catch (error) {
