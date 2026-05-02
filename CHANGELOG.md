@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.0] - 2026-05-01
+
+### Added
+- **Semantic product search via RAG** (`server/services/embeddingService.js`): OpenAI `text-embedding-3-small` embeddings for all 20 DOTICOM products with cosine-similarity retrieval; pre-computed index committed to `data/embeddings.json` for fast cold starts (~50 ms vs ~800 ms API call).
+- **Email order notifications** (`server/services/emailService.js`): fire-and-forget Resend email sent to staff after every confirmed order; silently no-ops when `RESEND_API_KEY` is unset.
+- **Embedding index build script** (`scripts/build-embedding-index.js`): regenerates `data/embeddings.json` against live API; run with `npm run build:embeddings`.
+- **Test coverage for RAG and email**: `embeddingService.test.js` (pure functions + `searchSimilar` with mocked OpenAI/fs) and `emailService.test.js` (8 branch-covering tests for `sendOrderNotification`).
+
+### Changed
+- `api/chat.js` and `server/routes/chat.js`: context builder now calls `searchSimilar()` (vector search) instead of the old keyword-based `buildContext()`.
+- `api/order.js`: calls `sendOrderNotification()` fire-and-forget after order confirmation.
+- `src/data/cakeDatabase.js`: trimmed from 22 to 20 products (removed two duplicates).
+
+### Infrastructure
+- `data/embeddings.json` unignored in `.gitignore` and committed — Vercel reads this at startup to avoid per-request embedding API calls.
+
 ## [0.1.0] - 2026-04-28
 
 ### Added
