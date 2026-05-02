@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
 import { evaluateOrder } from '../server/services/orderEngine.js';
+import { sendOrderNotification } from '../server/services/emailService.js';
 
 const PHONE_RE = /^[0-9]{10,11}$/;
 const maskPhone = (phone) => phone ? phone.slice(0, 4) + '****' + phone.slice(-2) : '****';
@@ -66,6 +67,11 @@ export default async function handler(req, res) {
       createdAt: new Date().toISOString(),
       cakeType: estimate.cakeType,
     };
+
+    // Fire-and-forget — email failure must not break the order response
+    sendOrderNotification(order, estimate).catch((err) =>
+      console.error('Email notification failed:', err.message)
+    );
 
     console.log('NEW ORDER via Chatbot:', JSON.stringify({
       id: order.id,
